@@ -1,24 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { Image } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import {useFonts, Inter_400Regular, Inter_600SemiBold, Inter_700Bold, Inter_800ExtraBold} from '@expo-google-fonts/inter'
+
+
+import { Routes } from './routes';
+
+
 export default function App() {
+  
+
+
   return (
-    <View  style={styles.container}>
-      <Text style={styles.text}>GymTracker</Text>
-    </View>
+    <>
+      <Routes/>
+      <StatusBar barStyle='light-content' backgroundColor='transparent'  translucent/>
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    color: 'purple',
-    fontSize: 20,
-    fontWeight: 'bold' 
-  }
-});
