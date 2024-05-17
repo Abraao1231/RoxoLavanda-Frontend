@@ -1,7 +1,6 @@
 import { TouchableOpacity } from "react-native";
 import { Text } from "react-native";
-import { useNavigation, ParamListBase } from "@react-navigation/native";
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import { useNavigation } from "@react-navigation/native";
 
 
 interface PropsButtonHomeProps {
