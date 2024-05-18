@@ -39,14 +39,14 @@ export default function Home(){
                           
                                 <Image blurRadius={activateRegister?2:0} source={LogoImage} className='mb-10'/>
                                 <Text className={clsx('text-white text-3xl transition-all', {
-                                    ["opacity-0"]: activateRegister,
+                                    ["opacity-30"]: activateRegister,
                                     ["opacity-100"]: !activateRegister 
                                     })}>
                                     GymTracker
                                 </Text>
 
                                 <Text className={clsx('text-white text-xl', {
-                                    ["opacity-0"]: activateRegister,
+                                    ["opacity-30"]: activateRegister,
                                     ["opacity-100"]: !activateRegister 
                                     })}
                                 >
