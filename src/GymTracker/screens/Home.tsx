@@ -9,8 +9,6 @@ import colors from 'tailwindcss/colors'
 import { useNavigation } from '@react-navigation/native';
 import clsx from 'clsx';
 import { Shadow } from 'react-native-shadow-2';
-
-
 export default function Home(){
     const navigation = useNavigation()
     const [activateRegister, setaAtivateRegister] = useState(false)
@@ -25,15 +23,18 @@ export default function Home(){
 
     return (
        
-        <View className='w-full h-full bg-zinc-900 flex items-center'>  
-
+        <View className='w-full h-full bg-zinc-950 flex items-center'>  
                 <ImageBackground 
                     source={BgHome} 
                     resizeMode='cover'
-                    className='w-full'
-                    blurRadius={3}
+                    className='w-full '
+                    blurRadius={activateRegister?6:3}
+                    style={{
+                        opacity: activateRegister?0.35:1
+                    }}
                 >   
-            
+                        
+
                         <View className='h-[90%] w-full flex items-center top-[30%]'>
                           
                                 <Image blurRadius={activateRegister?2:0} source={LogoImage} className='mb-10'/>
@@ -69,9 +70,11 @@ export default function Home(){
                 visible={activateRegister}
                 animationType="slide"
                 transparent={true}        
+                
             > 
-            
-           
+                <TouchableOpacity className='h-1/2 top-0' onPress={()=> setaAtivateRegister(false)}>
+
+                </TouchableOpacity>
                 <View
                     className='h-1/2 w-full  bg-zinc-950 absolute bottom-0 rounded-3xl'
                     > 
