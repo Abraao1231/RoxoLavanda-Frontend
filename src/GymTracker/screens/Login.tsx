@@ -15,9 +15,9 @@ export default function Login() {
     return (
 
         <View className="w-full h-full bg-zinc-900 grid items-center ">
-             <View className=" flex w-full h-[20%] p-5">
+             <View className=" flex w-full h-[12%] p-5">
 
-                <View className="pt-12 pl-2 flex flex-row items-center justify-between">
+                <View className="pt-8 pl-2 flex flex-row items-center justify-between">
                     <ArrowLeft color="white" size={35}></ArrowLeft>
                     <Image source={LogoImage}  style={{
                      resizeMode: 'contain',
