@@ -3,11 +3,12 @@ import Home from '../screens/Home';
 import Login from '../screens/Login';
 import Register from '../screens/Registe';
 import { Treino } from '../screens/Treino';
+import Perfil from '../screens/Perfil';
 
 export default function AppRoutes(){
     const { Navigator, Screen } = createNativeStackNavigator()
     return (
-        <Navigator screenOptions={{headerShown: false}} initialRouteName='Home' >
+        <Navigator screenOptions={{headerShown: false}} initialRouteName='Perfil' >
             <Screen 
                 name='Home' 
                 component={Home}  
@@ -35,9 +36,14 @@ export default function AppRoutes(){
                 options={{
                     animation:'fade',
                 }}
-            >
-
-            </Screen>
+            />
+            <Screen
+                name='Perfil'
+                component={Perfil}
+                options={{
+                    animation:'fade',
+                }}    
+            />
 
         </Navigator>
     )
