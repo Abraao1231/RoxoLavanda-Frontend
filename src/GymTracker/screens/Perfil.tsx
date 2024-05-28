@@ -1,12 +1,37 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import {Camera, UserCircle, PencilSimple, Gear, Globe, Star, SignOut, CaretRight} from 'phosphor-react-native';
+import { BackButton } from '../components/BackButton';
+import { PerfilButton } from '../components/PerfilButton';
+
+const dataButtons = [
+    {
+        title: "Editar Perfil",
+        icon: <PencilSimple size={32} weight="light" color='#52525B'/>
+    },
+    {
+        title:'Definições gerais',
+        icon: <Gear size={32} weight="light" color='#52525B'/>
+    },
+    {
+        title: 'Idioma',
+        icon: <Globe size={30} weight="bold" color='#52525B'/>
+    },
+    {
+        title: 'Nos Avalie',
+        icon: <Star size={30} weight="bold" color='#52525B'/>
+    }
+]
 
 
 export default function Perfil(){
     return (
         
-        <><View style={styles.container}>
+        <>
+        <View className='bg-zinc-950 p-4'>
+            <BackButton />
+        </View>
+        <View style={styles.container}>
             <Text style={styles.titulo}>Perfil</Text>
             <TouchableOpacity>
                 <View style={styles.profileAvatar}>
@@ -20,49 +45,14 @@ export default function Perfil(){
         </View>
 
             <View style={styles.teste}>
-                <TouchableOpacity onPress={() => { // handle onPress
-                }} style={styles.row}>
-                    <View style={styles.rowIcon}>
-                        <PencilSimple size={32} weight="light" color='#52525B'/>
-                    </View>
-                    <Text style={styles.rowLabel}>Editar perfil</Text>
-                    <View style={styles.rowSpacer}/>
-                    <CaretRight size={30} weight="bold" color='#52525B'/>
-                </TouchableOpacity>
 
-
-                <TouchableOpacity onPress={() => { // handle onPress
-                }} style={styles.row}>
-                    <View style={styles.rowIcon}>
-                        <Gear size={32} weight="light" color='#52525B'/>
-                    </View>
-                    <Text style={styles.rowLabel}>Definições gerais</Text>
-                    <View style={styles.rowSpacer}/>
-                    <CaretRight size={30} weight="bold" color='#52525B'/>
-                </TouchableOpacity>
-
-
-                <TouchableOpacity onPress={() => { // handle onPress
-                }} style={styles.row}>
-                    <View style={styles.rowIcon}>
-                        <Globe size={32} weight="light" color='#52525B'/>
-                    </View>
-                    <Text style={styles.rowLabel}>Idioma</Text>
-                    <View style={styles.rowSpacer}/>
-                    <CaretRight size={30} weight="bold" color='#52525B'/>
-                </TouchableOpacity>
-
-
-                <TouchableOpacity onPress={() => { // handle onPress
-                }} style={styles.row}>
-                    <View style={styles.rowIcon}>
-                        <Star size={32} weight="fill" color='#52525B'/>
-                    </View>
-                    <Text style={styles.rowLabel}>Nos Avalie</Text>
-                    <View style={styles.rowSpacer}/>
-                    <CaretRight size={30} weight="bold" color='#52525B'/>
-                </TouchableOpacity>
-
+                {
+                    dataButtons.map((item) => {
+                        return (
+                            <PerfilButton key={item.title} title={item.title} icon={item.icon}/>
+                        )
+                    })
+                }
                 
                 <TouchableOpacity onPress={() => { // handle onPress
                 }} style={styles.rowpink}>
@@ -71,10 +61,10 @@ export default function Perfil(){
                         <SignOut size={32} weight="light" color='white' />
                     </View>
                 </TouchableOpacity>
-            </View>  
-        <View style={styles.versionBox}>
-            <Text style={styles.versionText}>Versão 1.0.0</Text>
-        </View>
+                    </View>  
+                <View style={styles.versionBox}>
+                    <Text style={styles.versionText}>Versão 1.0.0</Text>
+            </View>
         </>
 
     );
@@ -83,7 +73,7 @@ export default function Perfil(){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 39,
+        paddingTop: 10,
         backgroundColor: '#09090B',
         alignItems:'center',
     },
@@ -116,36 +106,11 @@ const styles = StyleSheet.create({
         borderRadius: 9999,
         backgroundColor: 'white',
     },
-    row: {
-        flexDirection:'row',
+    teste: {
+        backgroundColor: '#09090B',
         alignItems: 'center',
-        justifyContent: 'flex-start',
-        height: 65,
-        width: 355,
-        backgroundColor: '#27272A',
-        borderRadius: 10,
-        marginBottom: 18,
-        paddingLeft: 12,
-        paddingRight: 12,
+        paddingBottom: 20,
     },
-    rowIcon: {
-        width: 32,
-        height: 32,
-        borderRadius: 9999,
-        marginRight: 12,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    rowIconPink: {
-        width: 32,
-        height: 32,
-        borderRadius: 9999,
-        marginLeft: 12,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },   
     rowpink: {
         flexDirection:'row',
         alignItems:'center',
@@ -160,11 +125,6 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         color: 'white',
     },
-    teste: {
-        backgroundColor: '#09090B',
-        alignItems: 'center',
-        paddingBottom: 20,
-    },
     versionText:{
         fontSize: 13,
         color:'rgba(255, 255, 255, 0.5)',
@@ -175,9 +135,14 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         paddingBottom: 10,
     },
-    rowSpacer: {
-        flexGrow: 1,
-        flexShrink: 1,
-        flexBasis: 0,
-    },
+    rowIconPink: {
+        width: 32,
+        height: 32,
+        borderRadius: 9999,
+        marginLeft: 12,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },   
+    
 });
