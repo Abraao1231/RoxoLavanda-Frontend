@@ -3,42 +3,23 @@ import Home from '../screens/Home';
 import Login from '../screens/Login';
 import Register from '../screens/Registe';
 import { Treino } from '../screens/Treino';
+import Main from '../screens/Main';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { X } from 'phosphor-react-native';
 
 export default function AppRoutes(){
     const { Navigator, Screen } = createNativeStackNavigator()
+    const Tab = createBottomTabNavigator()
     return (
-        <Navigator screenOptions={{headerShown: false}} initialRouteName='Home' >
-            <Screen 
-                name='Home' 
-                component={Home}  
-                options={{
-                    animation: 'fade',
-                }}
-            />
-            <Screen 
-                name='Login' 
-                component={Login}  
-                options={{
-                    animation: 'fade',
-                }}
-            />
-            <Screen 
-                name='Register' 
-                component={Register} 
-                options={{
-                    animation: 'fade',
-                }}
-            />
+        <Tab.Navigator screenOptions={{headerShown: false}} initialRouteName='Main' >
+     
             <Screen
-                name='Treino'
-                component={Treino}
+                name='Main'
+                component={Main}
                 options={{
                     animation:'fade',
                 }}
-            >
-
-            </Screen>
-
-        </Navigator>
+            />
+        </Tab.Navigator>
     )
 }
