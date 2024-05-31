@@ -1,6 +1,7 @@
 import React from "react";
 import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import {Trash, GoogleLogo} from 'phosphor-react-native';
+import { BackButton } from '../components/BackButton';
 
 const dados = [
     {
@@ -37,7 +38,11 @@ const email = [
 export default function EditarPerfil(){
     return (
         
-        <><View style={styles.container}>
+        <>
+        <View style={styles.BackButton}>
+            <BackButton />
+        </View>
+        <View style={styles.container}>
             <Text style={styles.titulo}>Meu perfil</Text>
         </View>
 
@@ -87,7 +92,7 @@ export default function EditarPerfil(){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 39,
+        paddingTop: 0,
         backgroundColor: '#09090B',
         alignItems:'center',
     },
@@ -159,4 +164,9 @@ const styles = StyleSheet.create({
     icondelete: {
         marginLeft: 5,
     },
+    BackButton: {
+        backgroundColor:'#09090B',
+        paddingTop: 50,
+        paddingHorizontal: 20,
+    }
 });
