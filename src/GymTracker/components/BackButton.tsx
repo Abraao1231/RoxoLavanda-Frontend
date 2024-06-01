@@ -5,10 +5,11 @@ import { ArrowLeft } from "phosphor-react-native";
 
 
 export function BackButton() {
-    const { navigate } = useNavigation();
+
+    const { goBack } = useNavigation();
     return (
         <TouchableOpacity
-            onPress={() => { }}
+            onPress={goBack}
         >
             <ArrowLeft color="white" size={30}></ArrowLeft>
 

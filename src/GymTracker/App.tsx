@@ -8,8 +8,8 @@ export default function App() {
 
   return (
     <>
-      <Routes />
-      <StatusBar barStyle='light-content' backgroundColor='transparent' translucent />
+      <Routes/>
+      <StatusBar barStyle='light-content' backgroundColor='black'  />
     </>
   );
 }
