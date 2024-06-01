@@ -105,7 +105,7 @@ export default function Home(){
                                 <View className='bg-violet-700 h-[1px] w-[30%]'></View>
                             </View>
                             
-                            <ButtonHome screen='Perfil' title='Login'/>
+                            <ButtonHome screen='Login' title='Login'/>
                         </View>    
                     </Shadow>
                           
