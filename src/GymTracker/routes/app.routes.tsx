@@ -8,7 +8,7 @@ import Perfil from '../screens/Perfil';
 export default function AppRoutes(){
     const { Navigator, Screen } = createNativeStackNavigator()
     return (
-        <Navigator screenOptions={{headerShown: false}} initialRouteName='Home' >
+        <Navigator screenOptions={{headerShown: false}} initialRouteName='Login' >
             <Screen 
                 name='Home' 
                 component={Home}  
