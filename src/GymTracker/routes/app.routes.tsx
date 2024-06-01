@@ -3,6 +3,7 @@ import Main from '../screens/Main';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import colors from 'tailwindcss/colors';
 import { MyTabBar } from '../components/TabBarNavigator';
+import { Barbell, House, ChartLineUp } from 'phosphor-react-native';
 export default function AppRoutes(){
     const {Navigator, Screen} = createBottomTabNavigator()
     return (
