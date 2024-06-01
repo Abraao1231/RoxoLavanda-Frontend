@@ -1,25 +1,48 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Home from '../screens/Home';
-import Login from '../screens/Login';
-import Register from '../screens/Registe';
-import { Treino } from '../screens/Treino';
+
 import Main from '../screens/Main';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { X } from 'phosphor-react-native';
-
+import colors from 'tailwindcss/colors';
+import { MyTabBar } from '../components/TabBarNavigator';
 export default function AppRoutes(){
-    const { Navigator, Screen } = createNativeStackNavigator()
-    const Tab = createBottomTabNavigator()
+    const {Navigator, Screen} = createBottomTabNavigator()
     return (
-        <Tab.Navigator screenOptions={{headerShown: false}} initialRouteName='Main' >
-     
-            <Screen
+        <Navigator 
+            tabBar={props => <MyTabBar {...props} />}
+            screenOptions={{
+                headerShown: false,
+            }} 
+            initialRouteName='Main'
+        >
+              <Screen
+                name='Treinos'
+                component={Main}
+                options={{
+                    tabBarIcon: () => <Barbell  size={30} color={colors.white}/>,
+                    tabBarLabel:"Treinos",
+                    
+                }}
+            />
+             <Screen
                 name='Main'
                 component={Main}
                 options={{
-                    animation:'fade',
+                    tabBarIcon: () => <House size={30} color={colors.white}/>,
+                    tabBarLabel:"Início",
+                    
                 }}
             />
-        </Tab.Navigator>
+            <Screen
+                name='Desempenho'
+                component={Main}
+                options={{
+                    tabBarIcon: () => <ChartLineUp size={30} color={colors.white}/>,
+                    tabBarLabel:"Desempenho",
+                    
+                }}
+            />
+           
+           
+        </Navigator>
     )
 }
+
