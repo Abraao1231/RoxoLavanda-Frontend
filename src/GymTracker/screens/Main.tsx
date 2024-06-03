@@ -8,10 +8,12 @@ import { useEffect, useRef } from "react";
 import { CircleButton } from "../components/CircleButton";
 import clsx from "clsx";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 
-export default function Main(){
+export default async function Main(){
+    // const token = await AsyncStorage.getItem('token')
     const scrollViewRef = useRef(null);
     const treinosRealizadosDia = [{
             dia: 26,

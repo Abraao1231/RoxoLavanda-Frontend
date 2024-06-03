@@ -41,8 +41,6 @@ export default function AppRoutes(){
                     
                 }}
             />
-           
-           
         </Navigator>
     )
 }
