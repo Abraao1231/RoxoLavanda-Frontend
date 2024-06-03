@@ -11,14 +11,16 @@ import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+
+
+
+
 export default function Login() {
     const {navigate} = useNavigation()
-
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
     async function  handleSubmitLogin(){
-
+        
         const response = await api.post('/auth/login', {
             email: email,
             password: password
@@ -27,8 +29,8 @@ export default function Login() {
         })   
         
         if (response.data.token){
-            // await AsyncStorage.setItem('token', response.data.token)
-            // await AsyncStorage.setItem('user', response.data.user)
+            await AsyncStorage.setItem('token', JSON.stringify(response.data.token))
+            await AsyncStorage.setItem('user', JSON.stringify(response.data.user))
 
             navigate("TabBar")
         }
@@ -89,7 +91,7 @@ export default function Login() {
                 onPress={handleSubmitLogin}
                 className="w-5/6 bg-violet-700 flex justify-center items-center p-5 rounded-md"
             >
-                 <Text className="text-white text-xl">Entrar</Text>
+                 <Text className="text-white">Entrar</Text>
             </TouchableOpacity>         
         </View >
     )
