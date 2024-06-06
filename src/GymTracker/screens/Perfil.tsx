@@ -3,7 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import {Camera, UserCircle, PencilSimple, Gear, Globe, Star, SignOut, CaretRight} from 'phosphor-react-native';
 import { BackButton } from '../components/BackButton';
 import { PerfilButton } from '../components/PerfilButton';
-
+import { useState, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const dataButtons = [
     {
         title: "Editar Perfil",
@@ -25,6 +26,20 @@ const dataButtons = [
 
 
 export default function Perfil(){
+
+    const [user, setUser] = useState({});
+    useEffect(() => {
+        const retrieveToken = async () => {
+          try {
+            setUser(JSON.parse(await AsyncStorage.getItem('user')))
+        } catch (error) {
+            console.error(error);
+          }
+        };
+    
+        retrieveToken();
+      }, []);
+
     return (
         
         <>
