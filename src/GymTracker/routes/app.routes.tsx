@@ -41,21 +41,6 @@ export default function AppRoutes(){
                     
                 }}
             />
-            <Screen
-                name='Perfil'
-                component={Perfil}
-                options={{
-                    animation:'fade',
-                }}    
-            />
-            <Screen
-                name='EditarPerfil'
-                component={EditarPerfil}
-                options={{
-                    animation:'fade',
-                }}
-            />
-
         </Navigator>
     )
 }
