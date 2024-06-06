@@ -46,7 +46,7 @@ export default function AppRoutes(){
                 }}    
             />
             <Screen
-                name='Definicoes-gerais'
+                name='DefinicoesGerais'
                 component={DefinicoesGerais}
                 options={{
                     animation:'fade',
