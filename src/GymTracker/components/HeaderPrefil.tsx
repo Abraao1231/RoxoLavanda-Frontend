@@ -1,14 +1,15 @@
 
-import { View, Text, Image} from "react-native";
+import { View, Text, Image, TouchableOpacity} from "react-native";
 import UserPic from '../assets/images/user-pic.png'
 import { UserCircle, Pencil, Gear } from "phosphor-react-native";
 import colors from "tailwindcss/colors";
 import { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 
 export default function HeaderPerfil(){
     const [user, setUser] = useState({});
-
+    const {navigate} = useNavigation();
     useEffect(() => {
         const retrieveToken = async () => {
           try {
@@ -16,13 +17,18 @@ export default function HeaderPerfil(){
         } catch (error) {
             console.error(error);
           }
-        };    
+        };
+    
         retrieveToken();
       }, []);
     return (
         <View className="w-full h-[12%] px-2 flex flex-row justify-between items-center">
             <View className="w-3/4 h-full flex flex-row items-center gap-4">
-                <Image source={UserPic}/>
+                <TouchableOpacity
+                    onPress={() => navigate("Perfil")}
+                >
+                    <Image source={UserPic}/>
+                </TouchableOpacity>
                 {/* <UserCircle size={100} color={colors.zinc[600]}/> */}
                 <View>
                     <Text className="text-xl font-semibold text-white">{user.userName}</Text>

@@ -27,13 +27,14 @@ export default function Main () {
     const retrieveToken = async () => {
       try {
         setToken( await AsyncStorage.getItem('token'))
-        setUser(await AsyncStorage.getItem('user'))
+        setUser(JSON.parse(await AsyncStorage.getItem('user')))
     } catch (error) {
         console.error(error);
       }
     };
 
     retrieveToken();
+    
     scrollViewRef.current?.scrollToEnd({ animated: true });
   }, []);
 
