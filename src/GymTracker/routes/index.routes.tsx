@@ -8,7 +8,7 @@ import AppRoutes from "./app.routes";
 export function AppRoutesIndex(){
     const { Navigator, Screen } = createNativeStackNavigator()
     return (
-        <Navigator screenOptions={{headerShown: false}} initialRouteName='Login'>
+        <Navigator screenOptions={{headerShown: false}} initialRouteName='TabBar'>
             <Screen 
                 name='Home' 
                 component={Home}  

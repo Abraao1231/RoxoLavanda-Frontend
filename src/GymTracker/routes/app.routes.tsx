@@ -1,5 +1,6 @@
 
 import Main from '../screens/Main';
+import { Treino } from '../screens/Treino';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import colors from 'tailwindcss/colors';
 import { MyTabBar } from '../components/TabBarNavigator';
@@ -16,12 +17,12 @@ export default function AppRoutes(){
         >
               <Screen
                 name='Treinos'
-                component={Main}
+                component={Treino}
                 options={{
                     tabBarIcon: () => <Barbell  size={30} color={colors.white}/>,
                     tabBarLabel:"Treinos",
-                    
                 }}
+                
             />
              <Screen
                 name='Main'
