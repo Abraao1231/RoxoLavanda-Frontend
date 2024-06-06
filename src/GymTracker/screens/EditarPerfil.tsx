@@ -2,90 +2,107 @@ import React from "react";
 import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import {Trash, GoogleLogo} from 'phosphor-react-native';
 import { BackButton } from '../components/BackButton';
+import { useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const dados = [
-    {
-        label: 'Nome',
-        value: 'Caua',
-    },
-    {
-        label: 'Gênero',
-        value: 'Masculino',
-    },
-    {
-        label: 'Altura',
-        value: '172 cm',
-    },
-    {
-        label: 'Peso',
-        value: '60,2 kg',
-    },
-    {
-        label: 'Objetivo',
-        value: 'Ganho muscular',
-    },
-    {
-        label: 'Área de foco',
-        value: 'Peito',
-    },
-];
-const email = [
-    {
-        labelEmail: 'nicolascaua57@gmail.com'
-    }
-];
+
 
 export default function EditarPerfil(){
-    return (
+
+
+
+    const [user, setUser] = useState({});
+    useEffect(() => {
+        const retrieveToken = async () => {
+          try {
+            setUser(JSON.parse(await AsyncStorage.getItem('user')))
+        } catch (error) {
+            console.error(error);
+          }
+        };
+    
+        retrieveToken();
+      }, []);
+    
+    
+      const dados = [
+        {
+            label: 'Nome',
+            value: user.userName,
+        },
+        {
+            label: 'Gênero',
+            value:  user.genero,
+        },
+        {
+            label: 'Altura',
+            value: `${user.altura} m`,
+        },
+        {
+            label: 'Peso',
+            value: `${user.peso} kg`,
+        },
+        {
+            label: 'Objetivo',
+            value: 'Ganho muscular',
+        },
+        {
+            label: 'Área de foco',
+            value: 'Peito',
+        },
+    ];
+
+      return (
         
-        <>
-        <View style={styles.BackButton}>
-            <BackButton />
-        </View>
-        <View style={styles.container}>
-            <Text style={styles.titulo}>Meu perfil</Text>
-        </View>
+        <View className="h-full w-full">
+            <View style={styles.BackButton}>
+                <BackButton />
+            </View>
+            <View style={styles.container}>
+                <Text style={styles.titulo}>Meu perfil</Text>
+            </View>
 
 
-        <View style={styles.dados}>
-            {dados.map(({label, value }, index) => (
-                <View key={index}>
-                  <TouchableOpacity onPress={() => { // handle onPress
-            }} style={styles.row}>
-                      <Text style={styles.rowLabel}>{label}</Text>
-                      <Text style={styles.rowValue}>{value}</Text>
-                  </TouchableOpacity>
-                </View>
-              ))}
-        </View>
-
-
-        
-        <View style={styles.teste}>
-            {email.map(({labelEmail }, index) => (
-                <View key={index}>
+            <View style={styles.dados}>
+                {dados.map(({label, value }, index) => (
+                    <View key={index}>
                     <TouchableOpacity onPress={() => { // handle onPress
-            }} style={styles.rowemail}>
-                        <Text style={styles.textemail}>{labelEmail}</Text>
-                        <View style={styles.iconemail}/>
-                        <GoogleLogo size={20} color="#e8e8e8" weight="bold" />
+                }} style={styles.row}>
+                        <Text style={styles.rowLabel}>{label}</Text>
+                        <Text style={styles.rowValue}>{value}</Text>
                     </TouchableOpacity>
-                </View>
+                    </View>
                 ))}
+            </View>
+
+
+        
+            <View style={styles.teste}>
+                
+                    <View >
+                        <TouchableOpacity 
+                        onPress={() => {  }} 
+                        style={styles.rowemail}>
+                            <Text style={styles.textemail}>{user.email}</Text>
+                            <View style={styles.iconemail}/>
+                            <GoogleLogo size={20} color="#e8e8e8" weight="bold" />
+                        </TouchableOpacity>
+                    </View>
+                
+            </View>
+
+
+
+            <View style={styles.teste}>
+                <TouchableOpacity onPress={() => { // handle onPress
+                }} style={styles.rowdelete}>
+                    <Text style={styles.textdelete}>Excluir conta</Text>
+                    <View style={styles.icondelete}>
+                        <Trash size={18} color="#EF4444" weight="bold" />
+                    </View>
+                </TouchableOpacity>
+            </View>
         </View>
-
-
-
-        <View style={styles.teste}>
-            <TouchableOpacity onPress={() => { // handle onPress
-            }} style={styles.rowdelete}>
-                <Text style={styles.textdelete}>Excluir conta</Text>
-                <View style={styles.icondelete}>
-                    <Trash size={18} color="#EF4444" weight="bold" />
-                </View>
-            </TouchableOpacity>
-        </View>
-        </>
     )
 }
 

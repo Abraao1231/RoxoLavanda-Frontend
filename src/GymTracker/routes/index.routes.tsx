@@ -5,6 +5,7 @@ import Register from '../screens/Registe';
 import { Treino } from '../screens/Treino';
 import AppRoutes from "./app.routes";
 import Perfil from "../screens/Perfil";
+import EditarPerfil from "../screens/EditarPerfil";
 
 export function AppRoutesIndex(){
     const { Navigator, Screen } = createNativeStackNavigator()
@@ -40,6 +41,13 @@ export function AppRoutesIndex(){
             <Screen
                 name='Perfil'
                 component={Perfil}
+                options={{
+                    animation:'fade',
+                }}
+            />
+             <Screen
+                name='EditarPerfil'
+                component={EditarPerfil}
                 options={{
                     animation:'fade',
                 }}

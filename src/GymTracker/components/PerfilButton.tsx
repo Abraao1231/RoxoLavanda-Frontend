@@ -2,20 +2,24 @@ import { View , TouchableOpacity, Text, StyleSheet} from "react-native";
 import { CaretRight } from "phosphor-react-native";
 import {PencilSimple} from "phosphor-react-native";
 import { ReactNode } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 interface PerfilButtonProps {
     title: string
     icon: ReactNode
+    screen?: string
 }
 
 
 export function PerfilButton(props: PerfilButtonProps){
 
-
+    const {navigate} = useNavigation();
 
     return (
-        <TouchableOpacity onPress={() => { // handle onPress
-        }} style={styles.row}>
+        <TouchableOpacity 
+            onPress={() => navigate(props.screen)} 
+            style={styles.row}
+            >
             <View style={styles.rowIcon}>
                 {props.icon}
             </View>

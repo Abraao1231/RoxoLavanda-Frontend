@@ -8,6 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const dataButtons = [
     {
         title: "Editar Perfil",
+        screen: 'EditarPerfil',
         icon: <PencilSimple size={32} weight="light" color='#52525B'/>
     },
     {
@@ -27,18 +28,6 @@ const dataButtons = [
 
 export default function Perfil(){
 
-    const [user, setUser] = useState({});
-    useEffect(() => {
-        const retrieveToken = async () => {
-          try {
-            setUser(JSON.parse(await AsyncStorage.getItem('user')))
-        } catch (error) {
-            console.error(error);
-          }
-        };
-    
-        retrieveToken();
-      }, []);
 
     return (
         
@@ -64,7 +53,7 @@ export default function Perfil(){
                 {
                     dataButtons.map((item) => {
                         return (
-                            <PerfilButton key={item.title} title={item.title} icon={item.icon}/>
+                            <PerfilButton key={item.title} title={item.title} icon={item.icon} screen={item.screen}/>
                         )
                     })
                 }
