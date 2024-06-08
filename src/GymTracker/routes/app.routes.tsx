@@ -1,4 +1,3 @@
-
 import Main from '../screens/Main';
 import { Treino } from '../screens/Treino';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -41,6 +40,13 @@ export default function AppRoutes(){
                     tabBarLabel:"Desempenho",
                     
                 }}
+            />
+           <Screen
+                name='DefinicoesGerais'
+                component={DefinicoesGerais}
+                options={{
+                    animation:'fade',
+                }}    
             />
         </Navigator>
     )
