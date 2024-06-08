@@ -7,7 +7,7 @@
     "icon": "./assets/images/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/images/iphone-splash-preview-dark.png",
+      "image": "./assets/images/back.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },

@@ -1,58 +1,54 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Home from '../screens/Home';
-import Login from '../screens/Login';
-import Register from '../screens/Registe';
+import Main from '../screens/Main';
 import { Treino } from '../screens/Treino';
-import Perfil from '../screens/Perfil';
-import DefinicoesGerais from '../screens/DefinicoesGerais';
-
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import colors from 'tailwindcss/colors';
+import { MyTabBar } from '../components/TabBarNavigator';
+import { Barbell, House, ChartLineUp } from 'phosphor-react-native';
 export default function AppRoutes(){
-    const { Navigator, Screen } = createNativeStackNavigator()
+    const {Navigator, Screen} = createBottomTabNavigator()
     return (
-        <Navigator screenOptions={{headerShown: false}} initialRouteName='DefinicoesGerais' >
-            <Screen 
-                name='Home' 
-                component={Home}  
-                options={{
-                    animation: 'fade',
-                }}
-            />
-            <Screen 
-                name='Login' 
-                component={Login}  
-                options={{
-                    animation: 'fade',
-                }}
-            />
-            <Screen 
-                name='Register' 
-                component={Register} 
-                options={{
-                    animation: 'fade',
-                }}
-            />
-            <Screen
-                name='Treino'
+        <Navigator 
+            tabBar={props => <MyTabBar {...props} />}
+            screenOptions={{
+                headerShown: false,
+            }} 
+            initialRouteName='Main'
+        >
+              <Screen
+                name='Treinos'
                 component={Treino}
                 options={{
-                    animation:'fade',
+                    tabBarIcon: () => <Barbell  size={30} color={colors.white}/>,
+                    tabBarLabel:"Treinos",
+                }}
+                
+            />
+             <Screen
+                name='Main'
+                component={Main}
+                options={{
+                    tabBarIcon: () => <House size={30} color={colors.white}/>,
+                    tabBarLabel:"Início",
+                    
                 }}
             />
             <Screen
-                name='Perfil'
-                component={Perfil}
+                name='Desempenho'
+                component={Main}
                 options={{
-                    animation:'fade',
-                }}    
+                    tabBarIcon: () => <ChartLineUp size={30} color={colors.white}/>,
+                    tabBarLabel:"Desempenho",
+                    
+                }}
             />
-            <Screen
+           <Screen
                 name='DefinicoesGerais'
                 component={DefinicoesGerais}
                 options={{
                     animation:'fade',
                 }}    
             />
-
         </Navigator>
     )
 }
+
