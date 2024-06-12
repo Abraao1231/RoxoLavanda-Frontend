@@ -20,13 +20,13 @@ export default function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     async function  handleSubmitLogin(){
-        
+                
         const response = await api.post('/auth/login', {
             email: email,
             password: password
         }).catch((error)=>{
             console.log(error);  
-        })   
+        })
         
         if (response.data.token){
             await AsyncStorage.setItem('token', JSON.stringify(response.data.token))
@@ -35,7 +35,7 @@ export default function Login() {
             navigate("TabBar")
         }
     }
-    
+
     return (
 
         <View className="w-full h-full bg-zinc-900 grid items-center ">

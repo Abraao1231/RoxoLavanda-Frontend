@@ -24,10 +24,17 @@ const dataButtons = [
         icon: <Star size={30} weight="bold" color='#52525B'/>
     }
 ]
-
+import { Modal } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Perfil(){
-
+    const [activeModal, setActiveModal] = useState(false)
+    const {navigate} = useNavigation()
+    async function handleExitAccount() {
+        await AsyncStorage.removeItem('user')
+        await AsyncStorage.removeItem('token')
+        navigate('Home')
+    }
 
     return (
         
@@ -58,8 +65,8 @@ export default function Perfil(){
                     })
                 }
                 
-                <TouchableOpacity onPress={() => { // handle onPress
-                }} style={styles.rowpink}>
+                <TouchableOpacity onPress={() => setActiveModal(true)} 
+                style={styles.rowpink}>
                     <Text style={styles.rowLabel}>Sair</Text>
                     <View style={styles.rowIconPink}>
                         <SignOut size={32} weight="light" color='white' />
@@ -69,6 +76,34 @@ export default function Perfil(){
                 <View style={styles.versionBox}>
                     <Text style={styles.versionText}>Versão 1.0.0</Text>
             </View>
+            <Modal
+                visible={activeModal}
+                animationType="slide"
+                transparent={true}     
+                className="h-full w-full "   
+                
+            > 
+             
+                <View
+                    className='h-52 w-5/6 m-auto bg-zinc-900 rounded-3xl p-6 border-[1px] border-zinc-700'
+                    > 
+                    <View className="h-5/6 pt-2">
+                        <Text className="text-[20px] text-white font-bold">Deseja Sair de sua conta ?</Text>
+                    </View>
+                    <View className="h-1/6 flex flex-row gap-x-4 justify-end">
+                        <TouchableOpacity
+                            onPress={handleExitAccount}
+                        >
+                            <Text className="text-red-500 font-bold">SIM</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => setActiveModal(false)}
+                        >
+                            <Text className="text-blue-500 font-bold">NÃO</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
         </>
 
     );
@@ -119,8 +154,8 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'center',
-        height: 65,
-        width: 184.5,
+        height: 60,
+        width: 144.5,
         backgroundColor: '#6D28D9',
         borderRadius: 10,
     },

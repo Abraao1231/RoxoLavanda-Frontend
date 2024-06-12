@@ -2,10 +2,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import Home from '../screens/Home';
 import Login from '../screens/Login';
 import Register from '../screens/Registe';
-import { Treino } from '../screens/Treino';
+import { Treinos } from "../screens/Treinos";
 import AppRoutes from "./app.routes";
 import Perfil from "../screens/Perfil";
 import EditarPerfil from "../screens/EditarPerfil";
+import Treino from "../screens/Treino";
+import Exercicio from "../screens/Exercicio";
 
 export function AppRoutesIndex(){
     const { Navigator, Screen } = createNativeStackNavigator()
@@ -21,42 +23,49 @@ export function AppRoutesIndex(){
                 name='Login' 
                 component={Login}  
                 options={{
-                    animation: 'fade',
+                    animation: 'ios',
                 }}
             />
             <Screen 
                 name='Register' 
                 component={Register} 
                 options={{
-                    animation: 'fade',
+                    animation: 'ios',
                 }}
             />
             <Screen
                 name='Treino'
                 component={Treino}
                 options={{
-                    animation:'fade',
+                    animation:'ios',
                 }}
             />
             <Screen
                 name='Perfil'
                 component={Perfil}
                 options={{
-                    animation:'fade',
+                    animation:'ios',
                 }}
             />
-             <Screen
+            <Screen
                 name='EditarPerfil'
                 component={EditarPerfil}
                 options={{
-                    animation:'fade',
+                    animation:'ios',
+                }}
+            />
+             <Screen
+                name='Exercicio'
+                component={Exercicio}
+                options={{
+                    animation:'ios',
                 }}
             />
             <Screen
                 name='TabBar'
                 component={AppRoutes}
                 options={{
-                    animation:'fade',
+                    animation:'ios',
                 }}
             />
         </Navigator>

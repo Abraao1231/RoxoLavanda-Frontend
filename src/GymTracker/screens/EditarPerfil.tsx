@@ -1,16 +1,14 @@
 import React from "react";
-import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
+import {View, Text, StyleSheet, TouchableOpacity, Modal} from "react-native";
 import {Trash, GoogleLogo} from 'phosphor-react-native';
 import { BackButton } from '../components/BackButton';
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-
-
+import { api } from "../lib/axios";
+import { useNavigation } from "@react-navigation/native";
 export default function EditarPerfil(){
-
-
-
+    const {navigate} = useNavigation()
+    const [activeModal, setActiveModal] = useState(false)
     const [user, setUser] = useState({});
     useEffect(() => {
         const retrieveToken = async () => {
@@ -25,6 +23,19 @@ export default function EditarPerfil(){
       }, []);
     
     
+      async function handleDeleteAcount(){
+        
+        // setActiveModal(true)
+        api.delete(`/user/?id=${user.id}`)
+            .catch((err) => {
+                console.log(err.response.data.message);
+            }).then( async (response) => {
+                await AsyncStorage.removeItem('user')
+                await AsyncStorage.removeItem('token')
+                navigate('Home')       
+            })
+    }
+
       const dados = [
         {
             label: 'Nome',
@@ -54,7 +65,8 @@ export default function EditarPerfil(){
 
       return (
         
-        <View className="h-full w-full">
+        <View className="h-full w-full bg-zinc-950">
+            <View className="h-full w-full" style={{opacity: activeModal?0.1:1}}>
             <View style={styles.BackButton}>
                 <BackButton />
             </View>
@@ -63,7 +75,7 @@ export default function EditarPerfil(){
             </View>
 
 
-            <View style={styles.dados}>
+            <View style={styles.dados} >
                 {dados.map(({label, value }, index) => (
                     <View key={index}>
                     <TouchableOpacity onPress={() => { // handle onPress
@@ -94,13 +106,44 @@ export default function EditarPerfil(){
 
 
             <View style={styles.teste}>
-                <TouchableOpacity onPress={() => { // handle onPress
-                }} style={styles.rowdelete}>
+                <TouchableOpacity 
+                    onPress={() => setActiveModal(true)} 
+                    style={styles.rowdelete}>
                     <Text style={styles.textdelete}>Excluir conta</Text>
                     <View style={styles.icondelete}>
                         <Trash size={18} color="#EF4444" weight="bold" />
                     </View>
                 </TouchableOpacity>
+            </View>
+            <Modal
+                visible={activeModal}
+                animationType="slide"
+                transparent={true}     
+                className="h-full w-full "   
+                
+            > 
+             
+                <View
+                    className='h-52 w-5/6 m-auto bg-zinc-900 rounded-3xl p-6 border-[1px] border-zinc-700'
+                    > 
+                    <View className="h-5/6 pt-2">
+                        <Text className="text-[20px] text-white font-bold">Deseja excluir sua conta ?</Text>
+                        <Text className="text-[14px] text-white font-semibold">Você perdera o acesso a sua conta e seus dados</Text>
+                    </View>
+                    <View className="h-1/6 flex flex-row gap-x-4 justify-end">
+                        <TouchableOpacity
+                            onPress={handleDeleteAcount}
+                        >
+                            <Text className="text-red-500 font-bold">SIM</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => setActiveModal(false)}
+                        >
+                            <Text className="text-blue-500 font-bold">NÃO</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
             </View>
         </View>
     )
@@ -110,7 +153,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: 0,
-        backgroundColor: '#09090B',
         alignItems:'center',
     },
     titulo: {
@@ -119,7 +161,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     teste: {
-        backgroundColor: '#09090B',
         alignItems: 'center',
         paddingBottom: 40,
     },
@@ -139,7 +180,6 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#09090B',
         paddingBottom: 30,
     },
     row: {
@@ -182,7 +222,6 @@ const styles = StyleSheet.create({
         marginLeft: 5,
     },
     BackButton: {
-        backgroundColor:'#09090B',
         paddingTop: 50,
         paddingHorizontal: 20,
     }
