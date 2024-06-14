@@ -4,11 +4,12 @@ import Login from '../screens/Login';
 import Register from '../screens/Registe';
 import { Treino } from '../screens/Treino';
 import Perfil from '../screens/Perfil';
+import Idioma from '../screens/Idioma';
 
 export default function AppRoutes(){
     const { Navigator, Screen } = createNativeStackNavigator()
     return (
-        <Navigator screenOptions={{headerShown: false}} initialRouteName='Perfil' >
+        <Navigator screenOptions={{headerShown: false}} initialRouteName='Idioma' >
             <Screen 
                 name='Home' 
                 component={Home}  
@@ -40,6 +41,13 @@ export default function AppRoutes(){
             <Screen
                 name='Perfil'
                 component={Perfil}
+                options={{
+                    animation:'fade',
+                }}    
+            />
+            <Screen
+                name='Idioma'
+                component={Idioma}
                 options={{
                     animation:'fade',
                 }}    
