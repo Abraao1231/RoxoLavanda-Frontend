@@ -21,18 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#000000"
-      }
+      },
+      "package": "com.abraao1231.GymTracker"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
     },
-    "plugins": [
-      [
-        "expo-font",
-        {
-          "fonts": ["./assets/images/fonts/Viga-Regular.ttf"]
-        }
-      ]
-    ]
+    "extra": {
+      "eas": {
+        "projectId": "2ca27aec-7995-44eb-9621-b45ea3bdc2a9"
+      }
+    }
   }
 }
