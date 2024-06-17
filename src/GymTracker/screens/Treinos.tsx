@@ -10,6 +10,7 @@ import { useNavigation, useFocusEffect } from '@react-navigation/native';
 
 export function Treinos(){
     const [treinos, setTreinos] = useState([]);
+    const {navigate} = useNavigation();
     async function getData() {
         try {
         //   setToken( await AsyncStorage.getItem('token'))
@@ -48,6 +49,7 @@ export function Treinos(){
             </View>
             <TouchableOpacity 
                 className="h-14 w-40 flex flex-row bg-violet-700 absolute bottom-6 right-6 rounded-md justify-between items-center p-2"
+                onPress={() => navigate('NewTreino')}
             >
                 <Plus color={colors.white} size={25}></Plus>
                 <Text className="text-xl text-white">Novo Treino</Text>

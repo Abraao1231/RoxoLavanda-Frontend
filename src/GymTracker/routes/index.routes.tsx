@@ -8,11 +8,13 @@ import Perfil from "../screens/Perfil";
 import EditarPerfil from "../screens/EditarPerfil";
 import Treino from "../screens/Treino";
 import Exercicio from "../screens/Exercicio";
+import NewTreino from "../screens/NewTreino";
+import NewExercicio from "../screens/NewExercicio";
 
 export function AppRoutesIndex(){
     const { Navigator, Screen } = createNativeStackNavigator()
     return (
-        <Navigator screenOptions={{headerShown: false}} initialRouteName='Home'>
+        <Navigator screenOptions={{headerShown: false}} initialRouteName='NewExercicioTreino'>
             <Screen 
                 name='Home' 
                 component={Home}  
@@ -57,6 +59,20 @@ export function AppRoutesIndex(){
              <Screen
                 name='Exercicio'
                 component={Exercicio}
+                options={{
+                    animation:'ios',
+                }}
+            />
+             <Screen
+                name='NewTreino'
+                component={NewTreino}
+                options={{
+                    animation:'ios',
+                }}
+            />
+            <Screen
+                name='NewExercicioTreino'
+                component={NewExercicio}
                 options={{
                     animation:'ios',
                 }}

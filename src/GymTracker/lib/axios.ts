@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: 'https://roxolavanda-backend-1.onrender.com'
+    baseURL: 'http://192.168.1.118:3333'
 })

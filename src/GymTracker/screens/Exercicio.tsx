@@ -7,6 +7,7 @@ import { api } from "../lib/axios";
 import { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
+import { BackButton } from "../components/BackButton";
 
 export default function Exercicio( {route}){
    const {navigate, goBack} = useNavigation()
@@ -33,8 +34,9 @@ export default function Exercicio( {route}){
     }
 
     return (
-        <View className="w-full h-full bg-zinc-950 items-center ">
-            <View className="h-[30%]  w-full p-4 py-8 items-center ">
+        <View className="w-full h-full bg-zinc-950 ">
+            <View className="h-[7%] p-4"><BackButton/></View>
+            <View className="h-[23%]  w-full p-4 py-8 items-center ">
                 <View className="h-28 w-28 bg-zinc-900 items-center justify-center rounded-md border-2 border-zinc-600">
                     <Text className="text-white font-bold text-2xl">GIF</Text>
                 </View>
