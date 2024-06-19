@@ -12,6 +12,7 @@
     "@expo-google-fonts/inter": "^0.2.3",
     "@expo-google-fonts/viga": "^0.2.3",
     "@expo/vector-icons": "^14.0.2",
+    "@react-native-community/checkbox": "^0.5.17",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
     "clsx": "^2.1.1",
