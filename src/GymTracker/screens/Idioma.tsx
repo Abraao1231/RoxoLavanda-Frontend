@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { View, Text, TouchableOpacity, ScrollView} from "react-native";
 import styles from "../screens/style"
 import CountryFlag from "react-native-country-flag";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 
 
@@ -11,6 +12,7 @@ export default function Idiomas(){
         <ScrollView>
             <View style={styles.container}>
                 <Text style={styles.titulo}>Selecione seu idioma</Text>
+                <Text style={styles.paragrafo}>Selecione o idioma de acordo com o país de origem</Text>
                     {
                         [{isoCode:"ad", nome: "Andorra"},
                             {isoCode: "af", nome: "Afeganistão"},
@@ -53,13 +55,20 @@ export default function Idiomas(){
                             {isoCode: "ve", nome: "Venezuela"},
                             {isoCode: "zw", nome: "Zimbábue"},
                         ]
-                        .map((item) => (<View style={styles.row}>
+                        .map((item) => (<TouchableOpacity style={styles.row}>
                         <CountryFlag isoCode={item.isoCode} size={25}/>
                         <Text style={styles.nome}>{item.nome}</Text>
-                    </View>))
+                        <BouncyCheckbox
+                            size={20}
+                            fillColor="#6D28D9"
+                            unFillColor="#FFFFFF"
+                            iconStyle={{ borderColor: "#6D28D9" }}
+                            innerIconStyle={{ borderWidth: 1 }}
+                            textStyle={{ }}
+                            onPress={(isChecked: boolean) => {console.log(isChecked)}}
+                        style={styles.radioCheck}/>
+                    </TouchableOpacity>))
                     }
-                    <View>
-                    </View>
             </View>
         </ScrollView>
     

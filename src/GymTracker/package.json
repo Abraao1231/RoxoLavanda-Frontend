@@ -24,6 +24,7 @@
     "phosphor-react-native": "^2.0.0",
     "react": "18.2.0",
     "react-native": "0.73.6",
+    "react-native-bouncy-checkbox": "^4.0.1",
     "react-native-country-flag": "^2.0.2",
     "react-native-shadow-2": "^7.0.8",
     "react-native-svg": "^15.3.0"

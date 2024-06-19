@@ -13,6 +13,10 @@ const styles = StyleSheet.create({
         fontSize: 26,
         fontWeight: 'bold',
     },
+    paragrafo:{
+        color: '#D4D4D8',
+        paddingBottom: 30,
+    },
     row: {
         flexDirection:'row',
         alignItems: 'center',
@@ -70,14 +74,10 @@ const styles = StyleSheet.create({
         marginBottom: 2,
       },
       radioCheck: {
-        width: 22,
-        height: 22,
-        borderRadius: 9999,
         alignItems: 'center',
         justifyContent: 'center',
         marginLeft: 'auto',
-        borderWidth: 1,
-        borderColor: '#999B9A',
+        left: 300,
       },
       radioCheckActive: {
         borderColor: '#007bff',
