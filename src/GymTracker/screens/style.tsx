@@ -7,15 +7,21 @@ const styles = StyleSheet.create({
         backgroundColor: '#09090B',
         alignItems:'center',
     },
+    BackButton: {
+      backgroundColor:'#09090B',
+      paddingTop: 50,
+      paddingHorizontal: 20,
+    },
     titulo: {
-        padding: 50,
+        padding: 10,
         color: 'white',
         fontSize: 26,
         fontWeight: 'bold',
     },
     paragrafo:{
         color: '#D4D4D8',
-        paddingBottom: 30,
+        paddingBottom: 20,
+        paddingTop: 30,
     },
     row: {
         flexDirection:'row',

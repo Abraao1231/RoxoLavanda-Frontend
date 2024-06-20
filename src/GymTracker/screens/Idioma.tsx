@@ -33,8 +33,10 @@ export default function Idiomas(){
     },[]))
     return (    
         <ScrollView>
+            <View style={styles.BackButton}>
+                <BackButton />
+            </View>
             <View style={styles.container}>
-                <BackButton/>
                 <Text style={styles.titulo}>Selecione seu idioma</Text>
                 <Text style={styles.paragrafo}>Selecione o idioma de acordo com o país de origem</Text>
                     {
