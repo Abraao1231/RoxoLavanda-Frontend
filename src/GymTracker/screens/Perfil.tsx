@@ -1,12 +1,48 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import {Camera, UserCircle, PencilSimple, Gear, Globe, Star, SignOut, CaretRight} from 'phosphor-react-native';
-
+import { BackButton } from '../components/BackButton';
+import { PerfilButton } from '../components/PerfilButton';
+import { useState, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+const dataButtons = [
+    {
+        title: "Editar Perfil",
+        screen: 'EditarPerfil',
+        icon: <PencilSimple size={32} weight="light" color='#52525B'/>
+    },
+    {
+        title:'Definições gerais',
+        icon: <Gear size={32} weight="light" color='#52525B'/>
+    },
+    {
+        title: 'Idioma',
+        icon: <Globe size={30} weight="bold" color='#52525B'/>
+    },
+    {
+        title: 'Nos Avalie',
+        icon: <Star size={30} weight="bold" color='#52525B'/>
+    }
+]
+import { Modal } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Perfil(){
+    const [activeModal, setActiveModal] = useState(false)
+    const {navigate} = useNavigation()
+    async function handleExitAccount() {
+        await AsyncStorage.removeItem('user')
+        await AsyncStorage.removeItem('token')
+        navigate('Home')
+    }
+
     return (
         
-        <><View style={styles.container}>
+        <>
+        <View className='bg-zinc-950 p-4'>
+            <BackButton />
+        </View>
+        <View style={styles.container}>
             <Text style={styles.titulo}>Perfil</Text>
             <TouchableOpacity>
                 <View style={styles.profileAvatar}>
@@ -20,61 +56,54 @@ export default function Perfil(){
         </View>
 
             <View style={styles.teste}>
-                <TouchableOpacity onPress={() => { // handle onPress
-                }} style={styles.row}>
-                    <View style={styles.rowIcon}>
-                        <PencilSimple size={32} weight="light" color='#52525B'/>
-                    </View>
-                    <Text style={styles.rowLabel}>Editar perfil</Text>
-                    <View style={styles.rowSpacer}/>
-                    <CaretRight size={30} weight="bold" color='#52525B'/>
-                </TouchableOpacity>
 
-
-                <TouchableOpacity onPress={() => { // handle onPress
-                }} style={styles.row}>
-                    <View style={styles.rowIcon}>
-                        <Gear size={32} weight="light" color='#52525B'/>
-                    </View>
-                    <Text style={styles.rowLabel}>Definições gerais</Text>
-                    <View style={styles.rowSpacer}/>
-                    <CaretRight size={30} weight="bold" color='#52525B'/>
-                </TouchableOpacity>
-
-
-                <TouchableOpacity onPress={() => { // handle onPress
-                }} style={styles.row}>
-                    <View style={styles.rowIcon}>
-                        <Globe size={32} weight="light" color='#52525B'/>
-                    </View>
-                    <Text style={styles.rowLabel}>Idioma</Text>
-                    <View style={styles.rowSpacer}/>
-                    <CaretRight size={30} weight="bold" color='#52525B'/>
-                </TouchableOpacity>
-
-
-                <TouchableOpacity onPress={() => { // handle onPress
-                }} style={styles.row}>
-                    <View style={styles.rowIcon}>
-                        <Star size={32} weight="fill" color='#52525B'/>
-                    </View>
-                    <Text style={styles.rowLabel}>Nos Avalie</Text>
-                    <View style={styles.rowSpacer}/>
-                    <CaretRight size={30} weight="bold" color='#52525B'/>
-                </TouchableOpacity>
-
+                {
+                    dataButtons.map((item) => {
+                        return (
+                            <PerfilButton key={item.title} title={item.title} icon={item.icon} screen={item.screen}/>
+                        )
+                    })
+                }
                 
-                <TouchableOpacity onPress={() => { // handle onPress
-                }} style={styles.rowpink}>
+                <TouchableOpacity onPress={() => setActiveModal(true)} 
+                style={styles.rowpink}>
                     <Text style={styles.rowLabel}>Sair</Text>
                     <View style={styles.rowIconPink}>
                         <SignOut size={32} weight="light" color='white' />
                     </View>
                 </TouchableOpacity>
-            </View>  
-        <View style={styles.versionBox}>
-            <Text style={styles.versionText}>Versão 1.0.0</Text>
-        </View>
+                    </View>  
+                <View style={styles.versionBox}>
+                    <Text style={styles.versionText}>Versão 1.0.0</Text>
+            </View>
+            <Modal
+                visible={activeModal}
+                animationType="slide"
+                transparent={true}     
+                className="h-full w-full "   
+                
+            > 
+             
+                <View
+                    className='h-52 w-5/6 m-auto bg-zinc-900 rounded-3xl p-6 border-[1px] border-zinc-700'
+                    > 
+                    <View className="h-5/6 pt-2">
+                        <Text className="text-[20px] text-white font-bold">Deseja Sair de sua conta ?</Text>
+                    </View>
+                    <View className="h-1/6 flex flex-row gap-x-4 justify-end">
+                        <TouchableOpacity
+                            onPress={handleExitAccount}
+                        >
+                            <Text className="text-red-500 font-bold">SIM</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => setActiveModal(false)}
+                        >
+                            <Text className="text-blue-500 font-bold">NÃO</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
         </>
 
     );
@@ -83,7 +112,7 @@ export default function Perfil(){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 39,
+        paddingTop: 10,
         backgroundColor: '#09090B',
         alignItems:'center',
     },
@@ -116,42 +145,17 @@ const styles = StyleSheet.create({
         borderRadius: 9999,
         backgroundColor: 'white',
     },
-    row: {
-        flexDirection:'row',
+    teste: {
+        backgroundColor: '#09090B',
         alignItems: 'center',
-        justifyContent: 'flex-start',
-        height: 65,
-        width: 355,
-        backgroundColor: '#27272A',
-        borderRadius: 10,
-        marginBottom: 18,
-        paddingLeft: 12,
-        paddingRight: 12,
+        paddingBottom: 20,
     },
-    rowIcon: {
-        width: 32,
-        height: 32,
-        borderRadius: 9999,
-        marginRight: 12,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    rowIconPink: {
-        width: 32,
-        height: 32,
-        borderRadius: 9999,
-        marginLeft: 12,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },   
     rowpink: {
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'center',
-        height: 65,
-        width: 184.5,
+        height: 60,
+        width: 144.5,
         backgroundColor: '#6D28D9',
         borderRadius: 10,
     },
@@ -159,11 +163,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '700',
         color: 'white',
-    },
-    teste: {
-        backgroundColor: '#09090B',
-        alignItems: 'center',
-        paddingBottom: 20,
     },
     versionText:{
         fontSize: 13,
@@ -175,9 +174,14 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         paddingBottom: 10,
     },
-    rowSpacer: {
-        flexGrow: 1,
-        flexShrink: 1,
-        flexBasis: 0,
-    },
+    rowIconPink: {
+        width: 32,
+        height: 32,
+        borderRadius: 9999,
+        marginLeft: 12,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },   
+    
 });

@@ -6,38 +6,50 @@ import { Treino } from '../screens/Treino';
 import Perfil from '../screens/Perfil';
 import Idioma from '../screens/Idioma';
 
+import Main from '../screens/Main';
+import { Treinos } from '../screens/Treinos';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import colors from 'tailwindcss/colors';
+import { MyTabBar } from '../components/TabBarNavigator';
+import { Barbell, House, ChartLineUp } from 'phosphor-react-native';
 export default function AppRoutes(){
-    const { Navigator, Screen } = createNativeStackNavigator()
+    const {Navigator, Screen} = createBottomTabNavigator()
     return (
-        <Navigator screenOptions={{headerShown: false}} initialRouteName='Idioma' >
-            <Screen 
-                name='Home' 
-                component={Home}  
+        <Navigator 
+            tabBar={props => <MyTabBar {...props} />}
+            screenOptions={{
+                headerShown: false,
+            }} 
+            initialRouteName='Home'
+        >
+              <Screen
+                name='Treinos'
+                component={Treinos}
                 options={{
-                    animation: 'fade',
+                    tabBarIcon: () => <Barbell  size={30} color={colors.white}/>,
+                    tabBarLabel:"Treinos",
                 }}
+                
             />
-            <Screen 
-                name='Login' 
-                component={Login}  
+             <Screen
+                name='Main'
+                component={Main}
                 options={{
-                    animation: 'fade',
-                }}
-            />
-            <Screen 
-                name='Register' 
-                component={Register} 
-                options={{
-                    animation: 'fade',
+                    tabBarIcon: () => <House size={30} color={colors.white}/>,
+                    tabBarLabel:"Início",
+                    
                 }}
             />
             <Screen
-                name='Treino'
-                component={Treino}
+                name='Desempenho'
+                component={Main}
                 options={{
-                    animation:'fade',
+                    tabBarIcon: () => <ChartLineUp size={30} color={colors.white}/>,
+                    tabBarLabel:"Desempenho",
+                    
                 }}
             />
+<<<<<<< HEAD
             <Screen
                 name='Perfil'
                 component={Perfil}
@@ -53,6 +65,9 @@ export default function AppRoutes(){
                 }}    
             />
 
+=======
+>>>>>>> main
         </Navigator>
     )
 }
+
