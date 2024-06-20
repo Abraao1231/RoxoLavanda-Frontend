@@ -17,6 +17,7 @@ const dataButtons = [
     },
     {
         title: 'Idioma',
+        screen: 'Idioma',
         icon: <Globe size={30} weight="bold" color='#52525B'/>
     },
     {

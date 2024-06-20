@@ -10,11 +10,12 @@ import Treino from "../screens/Treino";
 import Exercicio from "../screens/Exercicio";
 import NewTreino from "../screens/NewTreino";
 import NewExercicio from "../screens/NewExercicio";
+import Idiomas from "../screens/Idioma";
 
 export function AppRoutesIndex(){
     const { Navigator, Screen } = createNativeStackNavigator()
     return (
-        <Navigator screenOptions={{headerShown: false}} initialRouteName='NewExercicioTreino'>
+        <Navigator screenOptions={{headerShown: false}} initialRouteName='Home'>
             <Screen 
                 name='Home' 
                 component={Home}  
@@ -57,6 +58,13 @@ export function AppRoutesIndex(){
                 }}
             />
              <Screen
+                name='Idioma'
+                component={Idiomas}
+                options={{
+                    animation:'ios',
+                }}
+            />
+             <Screen
                 name='Exercicio'
                 component={Exercicio}
                 options={{
@@ -77,6 +85,7 @@ export function AppRoutesIndex(){
                     animation:'ios',
                 }}
             />
+           
             <Screen
                 name='TabBar'
                 component={AppRoutes}

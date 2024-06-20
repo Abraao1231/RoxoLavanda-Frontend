@@ -49,24 +49,6 @@ export default function AppRoutes(){
                     
                 }}
             />
-<<<<<<< HEAD
-            <Screen
-                name='Perfil'
-                component={Perfil}
-                options={{
-                    animation:'fade',
-                }}    
-            />
-            <Screen
-                name='Idioma'
-                component={Idioma}
-                options={{
-                    animation:'fade',
-                }}    
-            />
-
-=======
->>>>>>> main
         </Navigator>
     )
 }
