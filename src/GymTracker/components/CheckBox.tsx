@@ -1,18 +1,22 @@
 import { TouchableOpacity } from "react-native";
-import { Text } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { Check } from "phosphor-react-native";
 
+interface CheckBoxProps {
+    onPress: Function
+    check: boolean
 
+}
 
+export function CheckBox({ onPress, check }: CheckBoxProps) {
 
-
-export function BackButton() {
-    const { navigate } = useNavigation();
     return (
         <TouchableOpacity
-            onPress={() => { }}
+            className="h-6 w-6 border-2 border-violet-600 rounded-md"
+            onPress={() => { onPress() }}
         >
-
+            {
+                check ? <Check size={20} color="white" /> : <></>
+            }
         </TouchableOpacity>
     )
 }

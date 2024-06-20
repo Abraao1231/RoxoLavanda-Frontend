@@ -16,7 +16,8 @@ export function InputBox(props: InputBoxprops) {
             </View>
             <View className="pl-5 ">
                 <TextInput placeholder={props.title}
-                    placeholderTextColor="#DCDCDC">
+                    placeholderTextColor="#DCDCDC"
+                    className="text-zinc-100">
                 </TextInput>
             </View>
         </View>
