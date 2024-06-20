@@ -1,3 +1,10 @@
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Home from '../screens/Home';
+import Login from '../screens/Login';
+import Register from '../screens/Registe';
+import { Treino } from '../screens/Treino';
+import Perfil from '../screens/Perfil';
+import Idioma from '../screens/Idioma';
 
 import Main from '../screens/Main';
 import { Treinos } from '../screens/Treinos';
@@ -13,7 +20,7 @@ export default function AppRoutes(){
             screenOptions={{
                 headerShown: false,
             }} 
-            initialRouteName='Main'
+            initialRouteName='Home'
         >
               <Screen
                 name='Treinos'
@@ -42,6 +49,24 @@ export default function AppRoutes(){
                     
                 }}
             />
+<<<<<<< HEAD
+            <Screen
+                name='Perfil'
+                component={Perfil}
+                options={{
+                    animation:'fade',
+                }}    
+            />
+            <Screen
+                name='Idioma'
+                component={Idioma}
+                options={{
+                    animation:'fade',
+                }}    
+            />
+
+=======
+>>>>>>> main
         </Navigator>
     )
 }

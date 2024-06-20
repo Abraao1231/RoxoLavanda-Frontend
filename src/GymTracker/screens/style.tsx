@@ -7,20 +7,21 @@ const styles = StyleSheet.create({
         backgroundColor: '#09090B',
         alignItems:'center',
     },
+    BackButton: {
+      backgroundColor:'#09090B',
+      paddingTop: 50,
+      paddingHorizontal: 20,
+    },
     titulo: {
+        padding: 10,
         color: 'white',
-        fontSize: 30,
+        fontSize: 26,
         fontWeight: 'bold',
     },
-    teste: {
-        backgroundColor: '#09090B',
-        alignItems: 'center',
-        paddingBottom: 100,
-    },
-    teste2: {
-        backgroundColor: '#09090B',
-        alignItems: 'center',
+    paragrafo:{
+        color: '#D4D4D8',
         paddingBottom: 20,
+        paddingTop: 30,
     },
     row: {
         flexDirection:'row',
@@ -28,39 +29,66 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         height: 65,
         width: 355,
-        backgroundColor: '#27272A',
+        borderWidth: .3,
+        borderColor: '#6D28D9',
         borderRadius: 10,
         marginBottom: 18,
         paddingLeft: 12,
         paddingRight: 12,
+        
     },
-    rowLabel: {
-        fontSize: 16,
-        fontWeight: '700',
-        color: '#D4D4D8',
+    nome: {
+        color: 'white',
+        fontWeight: 'bold',
+        left: 20,
     },
-    rowValue: {
-        position: 'absolute',
-        right: 50,
-        fontSize: 16,
-        fontWeight: '600',
-        color: '#A1A1AA',
+    paises: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-    dados: {
-
-        flexDirection: 'column',
-    },
-    BackButton: {
-        backgroundColor:'#09090B',
-        paddingTop: 50,
-        paddingHorizontal: 20,
-    },
-    rowSpacer: {
+    radio: {
         flexGrow: 1,
         flexShrink: 1,
         flexBasis: 0,
-    },
-
-   });
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        borderTopWidth: 1,
+        borderColor: '#e8e8e8',
+        height: 54,
+        paddingRight: 24,
+      },
+      radioWrapper: {
+        paddingLeft: 24,
+        position: 'relative',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+      },
+      radioImage: {
+        width: 30,
+        height: 30,
+        marginRight: 12,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+    radioLabel: {
+        fontSize: 17,
+        fontWeight: '600',
+        color: '#222222',
+        marginBottom: 2,
+      },
+      radioCheck: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginLeft: 'auto',
+        left: 300,
+      },
+      radioCheckActive: {
+        borderColor: '#007bff',
+        backgroundColor: '#007bff',
+      },
+});
 
 export default styles
