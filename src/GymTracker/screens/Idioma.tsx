@@ -5,6 +5,7 @@ import CountryFlag from "react-native-country-flag";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFocusEffect } from "@react-navigation/native";
+import { BackButton } from "../components/BackButton";
 export default function Idiomas(){
     const [isoCode, setIscoCode] = useState('');
     async function getLanguage() {
@@ -33,6 +34,7 @@ export default function Idiomas(){
     return (    
         <ScrollView>
             <View style={styles.container}>
+                <BackButton/>
                 <Text style={styles.titulo}>Selecione seu idioma</Text>
                 <Text style={styles.paragrafo}>Selecione o idioma de acordo com o país de origem</Text>
                     {
