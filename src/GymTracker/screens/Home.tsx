@@ -70,7 +70,6 @@ export default function Home(){
                 visible={activateRegister}
                 animationType="slide"
                 transparent={true}        
-                
             > 
                 <TouchableOpacity className='h-1/2 top-0' onPress={()=> setaAtivateRegister(false)}>
 
