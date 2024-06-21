@@ -9,7 +9,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 import { api } from "../lib/axios"
 
 export default function Treino({ route }){
-    console.log(route.params.data.id);
     
     const [exercicios, setExercicios] = useState([]);
     async function getData() {

@@ -61,7 +61,7 @@ export default function NewTreino(){
                 </ScrollView>
                 <TouchableOpacity
                     className="h-12 w-36 rounded-md bg-violet-700 flex-row justify-evenly items-center p-2"
-                    onPress={() => {navigate('NewExercicioTreino', {exercicios: data.exercicios} )}}
+                    onPress={() => {navigate('NewExercicioTreino', {exercicios: data.exercicios, action: "newTreino"} )}}
                 >
                     <Plus size={20} color={colors.white} weight="bold"/>
                     <Text className="text-xl font-bold text-white">Exercício</Text>

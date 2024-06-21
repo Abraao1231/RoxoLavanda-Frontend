@@ -12,6 +12,8 @@ interface CardTreinoProps {
 } 
 
 export default function CardTreino(props : CardTreinoProps){
+    console.log(props.data);
+    
     const {navigate} = useNavigation()
     return (
         <TouchableOpacity 

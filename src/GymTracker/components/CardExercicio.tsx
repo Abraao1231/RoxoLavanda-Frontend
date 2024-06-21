@@ -23,7 +23,7 @@ export default function CardExercicio(props : DataPropsCardTreino){
     const {navigate} = useNavigation()
     return (
         <TouchableOpacity
-            onPress={() => navigate('Exercicio', {data: props.data})}
+            onPress={() => navigate('Exercicio', {exercicio: props.data.exercicio, action: "updateExercicio"})}
         >
             <View className="h-full w-full bg-zinc-800 rounded-xl  flex-row border-2 border-zinc-700">
                 <View className="h-full w-2/6  items-center justify-center rounded-xl bg-zinc-700">
