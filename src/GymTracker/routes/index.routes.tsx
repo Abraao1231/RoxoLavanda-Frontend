@@ -15,7 +15,7 @@ import Idiomas from "../screens/Idioma";
 export function AppRoutesIndex(){
     const { Navigator, Screen } = createNativeStackNavigator()
     return (
-        <Navigator screenOptions={{headerShown: false}} initialRouteName='Home'>
+        <Navigator screenOptions={{headerShown: false}} initialRouteName='TabBar'>
             <Screen 
                 name='Home' 
                 component={Home}  

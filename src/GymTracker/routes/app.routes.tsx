@@ -20,7 +20,7 @@ export default function AppRoutes(){
             screenOptions={{
                 headerShown: false,
             }} 
-            initialRouteName='Home'
+            initialRouteName='Desempenho'
         >
               <Screen
                 name='Treinos'
