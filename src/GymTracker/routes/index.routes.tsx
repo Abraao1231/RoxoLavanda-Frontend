@@ -36,6 +36,7 @@ export function AppRoutesIndex(){
                     animation: 'ios',
                 }}
             />
+       
             <Screen
                 name='Treino'
                 component={Treino}

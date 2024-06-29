@@ -2,10 +2,10 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from '../screens/Home';
 import Login from '../screens/Login';
 import Register from '../screens/Registe';
-import { Treino } from '../screens/Treino';
+// import { Treino } from '../screens/Treino';
 import Perfil from '../screens/Perfil';
 import Idioma from '../screens/Idioma';
-
+import Desempenho from '../screens/Desempenho';
 import Main from '../screens/Main';
 import { Treinos } from '../screens/Treinos';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -42,7 +42,7 @@ export default function AppRoutes(){
             />
             <Screen
                 name='Desempenho'
-                component={Main}
+                component={Desempenho}
                 options={{
                     tabBarIcon: () => <ChartLineUp size={30} color={colors.white}/>,
                     tabBarLabel:"Desempenho",
