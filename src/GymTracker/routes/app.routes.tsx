@@ -12,6 +12,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import colors from 'tailwindcss/colors';
 import { MyTabBar } from '../components/TabBarNavigator';
 import { Barbell, House, ChartLineUp } from 'phosphor-react-native';
+import { Desempenho } from '../screens/Desempenho';
 export default function AppRoutes(){
     const {Navigator, Screen} = createBottomTabNavigator()
     return (
@@ -20,7 +21,7 @@ export default function AppRoutes(){
             screenOptions={{
                 headerShown: false,
             }} 
-            initialRouteName='Home'
+            initialRouteName='Main'
         >
               <Screen
                 name='Treinos'
@@ -42,7 +43,7 @@ export default function AppRoutes(){
             />
             <Screen
                 name='Desempenho'
-                component={Main}
+                component={Desempenho}
                 options={{
                     tabBarIcon: () => <ChartLineUp size={30} color={colors.white}/>,
                     tabBarLabel:"Desempenho",

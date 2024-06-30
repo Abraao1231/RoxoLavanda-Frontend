@@ -2,13 +2,14 @@ import { Text, TouchableOpacity, View, ImageBackground, Modal } from 'react-nati
 import { Image } from 'react-native';
 import LogoImage from '../assets/logoNova.png'
 import BgHome from '../assets/images/bg-home.jpg'
-import { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { ButtonHome } from '../components/ButtonHome';
 import { X, Lock, ShieldWarning } from 'phosphor-react-native';
 import colors from 'tailwindcss/colors'
 import { useNavigation } from '@react-navigation/native';
 import clsx from 'clsx';
 import { Shadow } from 'react-native-shadow-2';
+
 export default function Home(){
     const navigation = useNavigation()
     const [activateRegister, setaAtivateRegister] = useState(false)
@@ -21,24 +22,25 @@ export default function Home(){
         return unsubscribeFocus;
       }, [navigation]);
 
+     
     return (
        
         <View className='w-full h-full bg-zinc-950 flex items-center'>  
-                <ImageBackground 
+                {/* <ImageBackground 
                     source={BgHome} 
                     resizeMode='cover'
                     className='w-full '
-                    blurRadius={activateRegister?6:3}
+                    blurRadius={activateRegister?6:1}
                     style={{
                         opacity: activateRegister?0.35:1
                     }}
-                >   
+                >    */}
                         
 
                         <View className='h-[90%] w-full flex items-center top-[30%]'>
                           
                                 <Image blurRadius={activateRegister?2:0} source={LogoImage} className='mb-10'/>
-                                <Text className={clsx('text-white text-3xl transition-all', {
+                                <Text className={clsx('text-white text-3xl transition-all font-bold', {
                                     ["opacity-30"]: activateRegister,
                                     ["opacity-100"]: !activateRegister 
                                     })}>
@@ -64,7 +66,7 @@ export default function Home(){
                         </TouchableOpacity>
                     </View> 
 
-                </ImageBackground>
+                {/* </ImageBackground> */}
                                     
             <Modal
                 visible={activateRegister}

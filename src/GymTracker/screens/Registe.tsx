@@ -1,68 +1,164 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-// import ProgressBar from 'react-native-progress-bar';
-import Sound from 'react-native-sound';
+import React, {useState} from 'react';
+import { StatusBar, setStatusBarHidden } from 'expo-status-bar';
+import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
+import colors from 'tailwindcss/colors';
+import { BackButton } from "../components/BackButton";
+import { EnvelopeSimple, EyeSlash, LockKey} from "phosphor-react-native";
+import { LockSimple} from "phosphor-react-native";
+import{ IdentificationCard } from "phosphor-react-native";
+import { At } from "phosphor-react-native";
+import { Eye } from "phosphor-react-native";
+import { EjectSimple } from "phosphor-react-native";
+import { CheckBox } from "../components/CheckBox";
+import {z  } from 'zod';
+import { Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+//dividir layout com flex
+export default function Cadastro() {
 
-const Register = () => {
-  const [timeRemaining, setTimeRemaining] = useState(10); // Tempo inicial da contagem regressiva em segundos
 
-  useEffect(() => {
-    // if (timeRemaining === 0) {
-    //   // Pare de reproduzir o som quando a contagem regressiva chegar a zero
-    //   sound.stop();
-    //   return;
-    // }
+  const {navigate} = useNavigation();
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [confirmesenha, setConfirmesenha] = useState('');
+  const [viewPass, setViewPass] = useState(true)
+  const [viewConfirmPass, setViewConfirmPass] = useState(true)
+  
 
-    const intervalId = setInterval(() => {
-      setTimeRemaining(timeRemaining - 1);
-      if (timeRemaining <= 0)
-        clearInterval(intervalId)
-    }, 1000);
-
-    return () => clearInterval(intervalId);
-  }, [timeRemaining]);
-
-//   useEffect(() => {
-//     if (sound) {
-//       // Reproduza o som a cada segundo
-//       const intervalId = setInterval(() => {
-//         sound.play();
-//       }, 1000);
-
-//       return () => clearInterval(intervalId);
-//     }
-//   }, [sound]);
-
-//   useEffect(() => {
-//     // Carregue o som quando o componente for montado
-//     const soundObject = new Sound('beep.mp3', (error) => {
-//       if (error) {
-//         console.error('Erro ao carregar o som:', error);
-//         return;
-//       }
-
-//       setSound(soundObject);
-//     });
-//   }, []);
-
+  const cadastro = () => {
+    try {
+      // if (email.trim() !== confirmesenha.trim())
+      //   Alert.alert("Senhas diferentes")
+  
+      const validator = z.object({
+        "userName": z.string().min(3, {message: "O nome de usuario deve ter ao menos 3 digitos"}),
+        "email": z.string().email({message: "Email invalido"}),
+        "password": z.string().min(5, {message: "A senha deve ter no minimo 5 caracteres"}),
+      })
+      
+       const  data = {
+        "userName": nome,
+        "email": email,
+        "password": senha,
+       }  
+       const isValidate = validator.parse(data)
+       navigate("CompletePerfil", {dadosUser: data})
+    } catch (error) {
+        const erro = JSON.parse(error.message)[0].message
+        Alert.alert(erro)
+       }
+    
+  }
+//console.log(senha, confirmesenha)
   return (
-    <View style={styles.container}>
-      <Text style={styles.timeText}>{timeRemaining}s</Text>
-      {/* <ProgressBar progress={timeRemaining / 10} color="#007bff" /> */}
-    </View>
+    <View className="h-full w-full bg-zinc-900">
+      <View className="pt-11 pl-7">
+        <BackButton size={36}/>
+      </View>
+      <View className="top-[-43] left-[208]">
+          <Image className=" h-11 w-11"
+          source={require('../assets/logoNova.png')}/>
+          <Text className=" w-full font-bold pr-4 text-white left-11 top-[-30]"
+          numberOfLines={1}
+          >etapa 1 de 3</Text>
+      </View>
+      <View style={styles.criar} className='top-[-31]'>
+        <Text className="font-bold mt-[10px] mb-1 text-white"
+        style={{fontSize:34}}
+        >Criar conta</Text>
+        <Text className="w-[270] top-[-5] text-[#A1A1AA]"
+        style={{fontSize:19}}
+        numberOfLines={2}
+        >Cadastre-se para ter acesso ao
+        app 
+        </Text>
+      </View>
+      <View style={styles.textInput}> 
+        <View className='h-[65px] px-4 flex-row w-[90%] rounded-xl bg-[#27272A] items-center mb-[26px] mt-[-39]'>
+          <IdentificationCard size={30} color="white"/>
+          <TextInput 
+            className='h-[65px] w-[90%] pl-2 text-[#A1A1AA]'
+            placeholder='Nome'
+            placeholderTextColor='#A1A1AA' 
+            onChangeText={text=>setNome(text)}
+          />
+        </View>
+        <View className='h-[65px] px-4 flex-row w-[90%] rounded-xl bg-[#27272A] items-center mb-[26px]'>
+          <EnvelopeSimple size={30} color='white'/>
+          <TextInput className=' h-[65px] w-[90%] pl-2 text-[#A1A1AA]'
+          placeholder='E-mail'
+          placeholderTextColor='#A1A1AA' 
+          onChangeText={text=>setEmail(text)}
+          />
+        </View>
+        <View className='h-[65px] px-4 flex-row w-[90%] rounded-xl bg-[#27272A] items-center mb-[26px]'>
+          <LockKey size={30} color='white'/>
+          <TextInput className='h-[65px] w-[90%] pl-2 text-[#A1A1AA]'
+          secureTextEntry={viewPass}
+          placeholder='Senha' 
+          placeholderTextColor='#A1A1AA' 
+          onChangeText={text=>setSenha(text)} 
+          />
+          <TouchableOpacity className='right-9' onPress={() => setViewPass(prevState => !prevState)}>
+            {
+              viewPass ? <Eye size={30} color='white'/> : <EyeSlash size={30} color='white'/> 
+            }
+          </TouchableOpacity>
+        </View>
+        <View className='h-[65px] px-4 flex-row w-[90%] rounded-xl bg-[#27272A] items-center'>
+          <LockKey size={30} color='white'/>
+          <TextInput className='h-[65px] w-[90%] pl-2 text-[#A1A1AA]'
+          secureTextEntry={viewConfirmPass} 
+          placeholder='Confirme a senha' 
+          placeholderTextColor='#A1A1AA' 
+          onChangeText={text=>setConfirmesenha(text)}
+          />
+          <TouchableOpacity className='right-9'
+            onPress={() => setViewConfirmPass(prevState => !prevState)}
+          >
+            {
+              viewConfirmPass ? <Eye size={30} color='white'/> : <EyeSlash size={30} color='white'/> 
+            }
+            
+          </TouchableOpacity>
+        </View>
+        <View className='items-center my-6'> 
+         
+          </View>
+          <TouchableOpacity style={styles.btnCadastro} onPress={()=>cadastro()}>
+            <Text style={{color:'#FFFFFF',textAlign:'center', fontWeight: 'bold', fontSize:18}}>Continuar</Text>
+          </TouchableOpacity> 
+        
+      </View>
+
+      </View>
+
   );
-};
+}
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  textInput:{
     alignItems: 'center',
     justifyContent: 'center',
+    width:'100%',
+    paddingStart: '2%',
+    paddingEnd: '2%',
+    backgroundColor:'#18181B',
+    marginTop:-17,
+    flex: 4,
   },
-  timeText: {
-    fontSize: 48,
-    fontWeight: 'bold',
+  btnCadastro:{
+    width: '90%',
+    height:65,
+    backgroundColor:'#6D28D9',
+    borderRadius:10,
+    justifyContent:'center'
+  },
+  criar:{
+    flex: 1,
+    backgroundColor: '#18181B',
+    paddingStart: '8%',
+    paddingEnd: '6%'
   },
 });
-
-export default Register;

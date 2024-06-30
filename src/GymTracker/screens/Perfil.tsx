@@ -13,6 +13,8 @@ const dataButtons = [
     },
     {
         title:'Definições gerais',
+        screen: 'none',
+
         icon: <Gear size={32} weight="light" color='#52525B'/>
     },
     {
@@ -22,6 +24,8 @@ const dataButtons = [
     },
     {
         title: 'Nos Avalie',
+        screen: 'none',
+
         icon: <Star size={30} weight="bold" color='#52525B'/>
     }
 ]

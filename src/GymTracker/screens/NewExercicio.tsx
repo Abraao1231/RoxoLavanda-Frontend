@@ -72,12 +72,19 @@ export default function NewExercicio({route}){
                   filterExerciciosLista.length > 0  ?
                   filterExerciciosLista.map((item) => (
                       <TouchableOpacity
-                        onPress={() => navigate('Exercicio', {exercicio: {nome: item.nome}, action:route.params.action })}
+                        onPress={() => navigate('Exercicio', {
+                          treino: route.params.treino ? route.params.treino : {},
+                          exercicio: {
+                            exercicio: {nome: item.nome, id: item.id}}, 
+                            exercicios: route.params.exercicios
+                          ,action:route.params.action })}
                         key={item.id}
                       >
                       <View className="h-28 my-1 w-full bg-zinc-800 rounded-xl  flex-row border-2 border-zinc-700">
                           <View className="h-full w-2/6  items-center justify-center rounded-xl bg-zinc-700">
-                              <Text className="text-2xl text-white">GIF</Text>
+                              {/* <Text className="text-2xl text-white">GIF</Text> */}
+                              <Barbell color="white" size={50} weight="light"/>
+
                           </View>
                           <View className="h-full w-4/6 flex-row  items-center pl-4">
                               <Text className="text-xl font-bold text-white">{item.nome}</Text>

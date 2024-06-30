@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity } from "react-native"
-import { Info } from "phosphor-react-native"
+import { Barbell, Info } from "phosphor-react-native"
 import colors from "tailwindcss/colors"
 import { useNavigation } from "@react-navigation/native"
 
@@ -23,11 +23,12 @@ export default function CardExercicio(props : DataPropsCardTreino){
     const {navigate} = useNavigation()
     return (
         <TouchableOpacity
-            onPress={() => navigate('Exercicio', {exercicio: props.data.exercicio, action: "updateExercicio"})}
+            onPress={() => navigate('Exercicio', {exercicio: props.data, action: "updateExercicio"})}
         >
             <View className="h-full w-full bg-zinc-800 rounded-xl  flex-row border-2 border-zinc-700">
                 <View className="h-full w-2/6  items-center justify-center rounded-xl bg-zinc-700">
-                    <Text className="text-2xl text-white">GIF</Text>
+                    {/* <Text className="text-2xl text-white">GIF</Text> */}
+                    <Barbell color="white" size={50} weight="light"/>
                 </View>
                 <View className="h-full w-4/6 flex-row  items-center pl-4">
                     <View className="h-full w-3/4 justify-center ">

@@ -54,13 +54,10 @@ export default function EditarPerfil(){
             value: `${user.peso} kg`,
         },
         {
-            label: 'Objetivo',
-            value: 'Ganho muscular',
+            label: 'Nivel',
+            value: user.nivel,
         },
-        {
-            label: 'Área de foco',
-            value: 'Peito',
-        },
+        
     ];
 
       return (
@@ -120,7 +117,6 @@ export default function EditarPerfil(){
                 animationType="slide"
                 transparent={true}     
                 className="h-full w-full "   
-                
             > 
              
                 <View

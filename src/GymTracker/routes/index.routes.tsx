@@ -2,7 +2,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import Home from '../screens/Home';
 import Login from '../screens/Login';
 import Register from '../screens/Registe';
-import { Treinos } from "../screens/Treinos";
 import AppRoutes from "./app.routes";
 import Perfil from "../screens/Perfil";
 import EditarPerfil from "../screens/EditarPerfil";
@@ -11,13 +10,16 @@ import Exercicio from "../screens/Exercicio";
 import NewTreino from "../screens/NewTreino";
 import NewExercicio from "../screens/NewExercicio";
 import Idiomas from "../screens/Idioma";
+import { CompletePerfil } from "../screens/CompletePerfil";
+import ExecTreino from "../screens/ExecTreino";
+import { NivelFisico } from "../screens/NivelFisico";
 
 export function AppRoutesIndex(){
     const { Navigator, Screen } = createNativeStackNavigator()
     return (
         <Navigator 
             screenOptions={{headerShown: false}} 
-            initialRouteName='Login'
+            initialRouteName='Home'
         >
             
             <Screen 
@@ -54,6 +56,14 @@ export function AppRoutesIndex(){
                     animation:'ios',
                 }}
             />
+           <Screen
+                name='NivelFisico'
+                component={NivelFisico}
+                options={{
+                    animation:'ios',
+                }}
+            />
+           
             <Screen
                 name='EditarPerfil'
                 component={EditarPerfil}
@@ -61,9 +71,24 @@ export function AppRoutesIndex(){
                     animation:'ios',
                 }}
             />
+            <Screen
+                name='CompletePerfil'
+                component={CompletePerfil}
+                options={{
+                    animation:'ios',
+                }}
+            />
+            
              <Screen
                 name='Idioma'
                 component={Idiomas}
+                options={{
+                    animation:'ios',
+                }}
+            />
+            <Screen
+                name='ExecTreino'
+                component={ExecTreino}
                 options={{
                     animation:'ios',
                 }}

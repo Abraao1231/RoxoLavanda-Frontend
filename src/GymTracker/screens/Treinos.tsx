@@ -33,7 +33,7 @@ export function Treinos(){
             <Text className="text-4xl font-semibold text-white my-6">Treinos</Text>
             <View className="h-full items-center justify-center 0">
             {treinos.length?
-                <ScrollView>
+                <ScrollView className="w-full">
                     <View className="flex flex-wrap flex-row justify-between">
                         {treinos.map(item => (
                         <View key={item.id}
@@ -49,10 +49,10 @@ export function Treinos(){
             </View>
             <TouchableOpacity 
                 className="h-14 w-40 flex flex-row bg-violet-700 absolute bottom-6 right-6 rounded-md justify-between items-center p-2"
-                onPress={() => navigate('NewTreino')}
+                onPress={() => navigate('NewTreino', {exercicios: []})}
             >
-                <Plus color={colors.white} size={25}></Plus>
-                <Text className="text-xl text-white">Novo Treino</Text>
+                <Plus color={colors.white} weight="bold" size={25}></Plus>
+                <Text className="text-xl text-white ">Novo Treino</Text>
             </TouchableOpacity>
         </View>
       );

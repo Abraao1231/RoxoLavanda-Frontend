@@ -14,10 +14,11 @@ interface PerfilButtonProps {
 export function PerfilButton(props: PerfilButtonProps){
 
     const {navigate} = useNavigation();
-
+    console.log(props.screen);
+    
     return (
         <TouchableOpacity 
-            onPress={() => navigate(props.screen)} 
+            onPress={() => props.screen != "none"? navigate(props.screen) : console.log('')} 
             style={styles.row}
             >
             <View style={styles.rowIcon}>
