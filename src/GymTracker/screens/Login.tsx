@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import { BackButton } from "../components/BackButton";
 import { ArrowLeft } from "phosphor-react-native";
 import LogoImage from '../assets/logoNova.png'
@@ -22,7 +22,7 @@ export default function Login() {
             email: email,
             password: password
         }).catch((error)=>{
-            console.log(error);  
+            Alert.alert("Login inválido")
         })
                 
         if (response.data.token){
