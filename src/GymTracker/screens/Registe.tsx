@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { StatusBar, setStatusBarHidden } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import colors from 'tailwindcss/colors';
 import { BackButton } from "../components/BackButton";
 import { EnvelopeSimple, EyeSlash, LockKey} from "phosphor-react-native";
@@ -52,7 +52,8 @@ export default function Cadastro() {
   }
 //console.log(senha, confirmesenha)
   return (
-    <View className="h-full w-full bg-zinc-900">
+    <View className="h-full w-full bg-zinc-900 items-center">
+      <ScrollView>
       <View className="pt-11 pl-7">
         <BackButton size={36}/>
       </View>
@@ -67,7 +68,7 @@ export default function Cadastro() {
         <Text className="font-bold mt-[10px] mb-1 text-white"
         style={{fontSize:34}}
         >Criar conta</Text>
-        <Text className="w-[270] top-[-5] text-[#A1A1AA]"
+        <Text className="w-[270] top-[-5] text-[#A1A1AA] mb-8"
         style={{fontSize:19}}
         numberOfLines={2}
         >Cadastre-se para ter acesso ao
@@ -123,15 +124,14 @@ export default function Cadastro() {
             
           </TouchableOpacity>
         </View>
-        <View className='items-center my-6'> 
-         
-          </View>
-          <TouchableOpacity style={styles.btnCadastro} onPress={()=>cadastro()}>
+        
+          
+      </View>
+      </ScrollView>
+        <TouchableOpacity className='absolute bottom-8' style={styles.btnCadastro} onPress={()=>cadastro()}>
             <Text style={{color:'#FFFFFF',textAlign:'center', fontWeight: 'bold', fontSize:18}}>Continuar</Text>
           </TouchableOpacity> 
         
-      </View>
-
       </View>
 
   );

@@ -14,7 +14,6 @@ import NextWorkout from "../components/NextWorkou";
 import dayjs from 'dayjs'
 
 export default function Main () {
-
   const [token, setToken] = useState(null);
   const [user, setUser] = useState({});
   const scrollViewRef = useRef(null);

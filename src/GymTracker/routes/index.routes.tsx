@@ -13,13 +13,19 @@ import Idiomas from "../screens/Idioma";
 import { CompletePerfil } from "../screens/CompletePerfil";
 import ExecTreino from "../screens/ExecTreino";
 import { NivelFisico } from "../screens/NivelFisico";
-
+import { useState } from "react";
+import { useFocusEffect } from "@react-navigation/native";
+import { useCallback } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 export function AppRoutesIndex(){
+    
+
+
     const { Navigator, Screen } = createNativeStackNavigator()
     return (
         <Navigator 
             screenOptions={{headerShown: false}} 
-            initialRouteName='Home'
+            initialRouteName="Home"
         >
             
             <Screen 

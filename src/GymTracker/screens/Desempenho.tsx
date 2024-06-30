@@ -1,12 +1,30 @@
 import { View, StyleSheet, Text, TouchableOpacity, Image, TextInput, ImageBackground } from "react-native";
 import clsx from "clsx";
-import { ClockClockwise, Fire } from "phosphor-react-native"
+import { Barbell, ClockClockwise, Fire } from "phosphor-react-native"
 import { CircleButton } from "../components/CircleButton";
 import {ArrowRight} from "phosphor-react-native";
 import { useState } from "react";
-export function Desempenho(){
-    const [activeSession, setActiveSessio] = useState("Dia")
+import dayjs from 'dayjs';
+import 'dayjs/locale/pt-br';
 
+export function Desempenho(){
+
+
+// Configura o dayjs para usar o idioma português
+dayjs.locale('pt-br');
+
+// Função para obter a data formatada em português
+const getFormattedDate = () => {
+    const today = dayjs();
+    const dayOfMonth = today.format('D');
+    const month = today.format('MMMM');
+    const dayOfWeek = today.format('dddd');
+    
+    return {semana: dayOfWeek, diaMes: dayOfMonth, mes: month};
+};
+
+    const [activeSession, setActiveSessio] = useState("Dia")
+    const dataHoje =  getFormattedDate()
     return (
         <View className=" h-full w-full bg-black">
             <View className="mt-[28px] mb-5 items-center justify-center">
@@ -39,7 +57,7 @@ export function Desempenho(){
             </View>
             <View className="flex-row justify-between mx-[14] mb-7">
                 <View className={clsx("h-12 w-12 rounded-xl border-[0.2px] border-zinc-400 items-center justify-center bg-zinc-700")}>
-                    <TouchableOpacity className={clsx("h-12 w-12 rounded-xl border-[0.2px] border-zinc-400 items-center justify-center bg-zinc-900")}>
+                    <TouchableOpacity className={clsx("h-12 w-12 rounded-xl border-[1.2px] border-violet-700 items-center justify-center bg-zinc-800")}>
                         <Text className="text-white font-semibold"
                         style={{fontSize:16}}>
                             01
@@ -65,7 +83,7 @@ export function Desempenho(){
                         
                     </TouchableOpacity>
                 </View>
-                <View className={clsx("h-12 w-12 rounded-xl border-[0.2px] border-zinc-400 items-center justify-center bg-zinc-700")}>
+                <View className={clsx("h-12 w-12 rounded-xl border-[1.2px] border-zinc-400 items-center justify-center bg-zinc-700")}>
                     <TouchableOpacity className={clsx("h-12 w-12 rounded-xl border-[0.2px] border-zinc-400 items-center justify-center bg-zinc-900")}>
                         <Text className="text-white font-semibold"
                         style={{fontSize:16}}>
@@ -100,11 +118,11 @@ export function Desempenho(){
                     <View className="flex-col">
                         <Text className="text-zinc-200 font-bold"
                         style={{fontSize:29}}>
-                            Domingo
+                            {dataHoje.semana.charAt(0).toUpperCase() + dataHoje.semana.slice(1)}
                         </Text>
                         <Text className="text-zinc-500 font-bold mt-[-6px]"
                         style={{fontSize:17}}> 
-                            05 de Maio
+                            {dataHoje.diaMes} de {dataHoje.mes}
                         </Text>
                     </View>
                     <View className="absolute right-[-4] mt-[10px]">
@@ -115,7 +133,7 @@ export function Desempenho(){
             </View>
             <View className="items-center">
                 <View className="mt-[16px] w-[90%] flex-row justify-between px-[10px]">
-                        <View className="items-center w-[153px] h-[170px] border-[1.2px] border-violet-700 bg-zinc-900 rounded-3xl">
+                        <View className="items-center justify-between pb-2 w-[153px] h-[170px] border-[1.2px] border-violet-700 bg-zinc-900 rounded-3xl">
                             <Text className=" mt-2 text-white font-bold"
                             style={{fontSize:16}}>
                                 Tempo de
@@ -131,26 +149,26 @@ export function Desempenho(){
                             </View>
                             <Text className="text-white font-bold"
                             style={{fontSize:16}}>
-                                15:30
+                                30 minutos
                             </Text>
                         </View>
-                        <View className="items-center w-[153px] h-[170px] border-[1.2px] border-violet-700 bg-zinc-900 rounded-3xl">
+                        <View className="items-center justify-between pb-2 w-[153px] h-[170px] border-[1.2px] border-violet-700 bg-zinc-900 rounded-3xl">
                         <Text className=" mt-2 text-white font-bold"
                             style={{fontSize:16}}>
-                                Calorias
+                                Número de exercicios
                             </Text>
                             <View>
-                                <Text className=" mt-[-1px] text-white font-bold mb-1"
+                                {/* <Text className=" mt-[-1px] text-white font-bold mb-1"
                                 style={{fontSize:16}}>
                                     Gastas
-                                </Text>
+                                </Text> */}
                             </View>
                             <View className="mb-1">
-                                <Fire size={80} color="#5B21B6"/>
+                                <Barbell size={80} color="#5B21B6"/>
                             </View>
                             <Text className="text-white font-bold"
                             style={{fontSize:16}}>
-                                300 Kcal
+                                5 Exercicios
                             </Text>
                         </View>
                 </View>
