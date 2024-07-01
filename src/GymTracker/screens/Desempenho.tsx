@@ -19,9 +19,9 @@ const getFormattedDate = () => {
     const dayOfMonth = today.format('D');
     const month = today.format('MMMM');
     const dayOfWeek = today.format('dddd');
-    
     return {semana: dayOfWeek, diaMes: dayOfMonth, mes: month};
 };
+    const [active, setActive] = useState('Dia');
 
     const [activeSession, setActiveSessio] = useState("Dia")
     const dataHoje =  getFormattedDate()
@@ -33,22 +33,32 @@ const getFormattedDate = () => {
                 </Text>
             </View>
             <View className="flex-row items-center justify-center mb-8">
-                <View className=" h-[40px] w-[30%] bg-zinc-800 rounded-l-md">
-                    <TouchableOpacity className="h-full w-full justify-center items-center bg-zinc-800 rounded-md">
+                <View 
+                    
+                className=" h-[40px] w-[30%] bg-zinc-800 rounded-l-md">
+                    <TouchableOpacity
+                     onPress={() => setActive("Mes")}
+
+                    className={clsx("h-full w-full justify-center items-center bg-zinc-800 rounded-md", {['bg-violet-700']: active == "Mes"})}>
                         <Text className="text-white font-bold"
                         style={{fontSize:16}}
                         >Mês</Text>
                     </TouchableOpacity>
                 </View>
                 <View className=" h-[40px] w-[30%] bg-zinc-800">
-                    <TouchableOpacity className="h-full w-full justify-center items-center bg-zinc-800 rounded-md">
+                    <TouchableOpacity 
+                    onPress={() => setActive('Semana')}
+
+                    className={clsx("h-full w-full justify-center items-center bg-zinc-800 rounded-md", {['bg-violet-700']: active == "Semana"})}>
                         <Text className="text-white font-bold"
                         style={{fontSize:16}}
                         >Semana</Text>
                     </TouchableOpacity>
                 </View>
                 <View className=" h-[40px] w-[30%] bg-zinc-800 rounded-r-md">
-                    <TouchableOpacity className="h-full w-full justify-center items-center bg-[#7C3AED] rounded-md">
+                    <TouchableOpacity
+                        onPress={() => setActive('Dia')}
+                        className={clsx("h-full w-full justify-center items-center bg-zinc-800 rounded-md", {['bg-violet-700']: active == 'Dia'})}>
                         <Text className="text-white font-bold"
                         style={{fontSize:16}}
                         >Dia</Text>

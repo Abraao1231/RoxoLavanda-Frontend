@@ -20,7 +20,7 @@ export default function Main () {
   const [nextWorkout, setNextWorkout] = useState([]);
   const [last10Days, setLast10Days] = useState([]);
 
-  const diasDaSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado']
+  const diasDaSemana = ['Sábado','Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira']
   const retrieveToken = async () => {
     try {
       setToken( await AsyncStorage.getItem('token'))
@@ -40,6 +40,7 @@ export default function Main () {
 }, []))
 
 
+  console.log(last10Days);
   
   const navigation = useNavigation();
     
@@ -58,16 +59,16 @@ export default function Main () {
                   innerRadius={30}
                   padding={5}
                   padAngle={2}
-                  colorScale={[colors.black, colors.violet[600]]}
+                  colorScale={[colors.zinc[800], colors.violet[600]]}
                   labelRadius={50}
                   labels={[]}
                   cornerRadius={50}
                   data={[
                     { label: "", y: 25 },
-                    { label: "", y: 75 },
+                    { label: "", y: 0 },
                   ]}
                 />
-                <Text className="text-white text-center font-semibold absolute">75%</Text>
+                <Text className="text-white text-center font-semibold absolute">0%</Text>
               </View>
               <Text className="text-white text-center w-2/3 font-semibold mt-2">{item}</Text>
             </View>
@@ -85,14 +86,13 @@ export default function Main () {
       >
         {last10Days && last10Days.map((item) => (
           <TouchableOpacity
-            onPress={() => { navigation.navigate('Login') }}
             key={item.data}
             className={clsx("w-24 h-full rounded-2xl bg-zinc-800 flex items-center justify-between border-2 p-1 py-2", {
               ["border-violet-700"]: item.isExists,
               ["border-zinc-500"]: !item.isExists
             })}
           >
-            <Text className="text-white font-bold">{diasDaSemana[item.diaSemana]}</Text>
+            <Text className="text-white font-bold">{diasDaSemana[item.diaSemana] }</Text>
             <Text className="text-white font-bold text-2xl">{dayjs(item.data).date()}</Text>
             <View className="w-6 h-6">
               <View className={clsx("h-full w-full items-center justify-center rounded-full", {

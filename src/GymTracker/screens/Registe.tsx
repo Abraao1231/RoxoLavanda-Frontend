@@ -127,10 +127,10 @@ export default function Cadastro() {
         
           
       </View>
-      </ScrollView>
-        <TouchableOpacity className='absolute bottom-8' style={styles.btnCadastro} onPress={()=>cadastro()}>
+          <TouchableOpacity className='absolute bottom-8' style={styles.btnCadastro} onPress={()=>cadastro()}>
             <Text style={{color:'#FFFFFF',textAlign:'center', fontWeight: 'bold', fontSize:18}}>Continuar</Text>
           </TouchableOpacity> 
+      </ScrollView>
         
       </View>
 
